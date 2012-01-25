@@ -23,5 +23,4 @@ public class Kentta {
     public int[][] getKentta() {
         return kentta;
     }
-    
 }

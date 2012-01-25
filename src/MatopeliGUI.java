@@ -7,7 +7,7 @@ import java.awt.Graphics;
 public class MatopeliGUI extends javax.swing.JFrame {
     
     Graphics db;
-    Thread runner = null;
+    Thread paivittaja = null;
     
     /**
      * Creates new form NewJFrame
@@ -26,7 +26,7 @@ public class MatopeliGUI extends javax.swing.JFrame {
     private void initComponents() {
 
         scoreLabel = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
+        Kentta = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addKeyListener(new java.awt.event.KeyAdapter() {
@@ -39,14 +39,14 @@ public class MatopeliGUI extends javax.swing.JFrame {
         scoreLabel.setText("score: 000");
         scoreLabel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout KenttaLayout = new javax.swing.GroupLayout(Kentta);
+        Kentta.setLayout(KenttaLayout);
+        KenttaLayout.setHorizontalGroup(
+            KenttaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 351, Short.MAX_VALUE)
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        KenttaLayout.setVerticalGroup(
+            KenttaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 254, Short.MAX_VALUE)
         );
 
@@ -60,7 +60,7 @@ public class MatopeliGUI extends javax.swing.JFrame {
                 .addGap(153, 153, 153))
             .addGroup(layout.createSequentialGroup()
                 .addGap(23, 23, 23)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Kentta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(26, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -68,7 +68,7 @@ public class MatopeliGUI extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(scoreLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 18, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Kentta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(24, 24, 24))
         );
 
@@ -80,9 +80,9 @@ public class MatopeliGUI extends javax.swing.JFrame {
         // TODO add your handling code here:
         int nappain = evt.getKeyCode();
         
-        if (runner == null){
-            runner = new Thread();
-            runner.start();
+        if (paivittaja == null){
+            paivittaja = new Thread();
+            paivittaja.start();
         }
 
         if (nappain == 38){  // ylänuoli
@@ -143,7 +143,7 @@ public class MatopeliGUI extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel Kentta;
     private javax.swing.JLabel scoreLabel;
     // End of variables declaration//GEN-END:variables
 }
