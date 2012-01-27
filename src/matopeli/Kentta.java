@@ -15,7 +15,7 @@ public class Kentta {
     private int[][] kentta = {{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
                               {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1}, 
                               {1, 0, 3, 3, 3, 0, 0, 0, 0, 0, 0, 0, 1},
-                              {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+                              {1, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 1},
                               {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
                               {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
                               {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
@@ -52,7 +52,7 @@ public class Kentta {
     public void print(){
         for (int i = 0; i<kentta.length;i++){
             for (int j = 0; j<kentta[i].length;j++){
-                System.out.print(kentta[i][j]);
+                System.out.print(kentta[i][j] + " ");
             }
             System.out.println("");
         }
