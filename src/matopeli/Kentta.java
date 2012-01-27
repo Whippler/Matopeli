@@ -44,9 +44,20 @@ public class Kentta {
     public int getArvo(int x, int y) {
         return kentta[x][y];
     }
-    
+    /**
+     * Metodi arpoo kentälle uuden omenan
+     */
     public void setOmena(){
-        int x = (int)(Math.random()*11+1);
+        
+        while (true){
+            int x = (int)(Math.random()*11+1);
+            int y = (int)(Math.random()*11+1);
+            if (this.getArvo(x, y) != 3) {
+                this.setArvo(x, y, 2);
+                return;
+            }
+        }
+        
     }
     
     public void print(){

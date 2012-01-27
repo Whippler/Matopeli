@@ -7,6 +7,10 @@ public class Main {
         
        peli.print();
        peli.etene();
+       peli.etene();
+       peli.asetaSuunta("alas");
+       peli.etene();
        peli.print();
+       
     }
 }

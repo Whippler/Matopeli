@@ -9,7 +9,7 @@ import java.util.LinkedList;
  */
 public class Logiikka {
 
-    Kentta classic = new Kentta();
+    Kentta kentta = new Kentta();
     Mato mato = new Mato();
 
     public Logiikka() {
@@ -35,24 +35,24 @@ public class Logiikka {
         LinkedList<Integer> X = mato.getX();
         LinkedList<Integer> Y = mato.getY();
 
-        int ruutu = classic.getArvo(X.getFirst(), Y.getFirst());
+        int ruutu = kentta.getArvo(X.getFirst(), Y.getFirst());
 
         // poistaa hännän
         if (ruutu != 2) {
-            classic.setArvo(X.getLast(), Y.getLast(), 0);
+            kentta.setArvo(X.getLast(), Y.getLast(), 0);
             mato.poista();
+        } else {
+            kentta.setOmena();
         }
-
-            //arpoo uuden omenan kentälle
         
         // piirtää madon kentälle
         for (int i = 0; i < mato.getPituus() - 1; i++) {
-            classic.setArvo(X.get(i), Y.get(i), 3);
+            kentta.setArvo(X.get(i), Y.get(i), 3);
         }
 
     }
 
     public void print() {
-        classic.print();
+        kentta.print();
     }
 }
