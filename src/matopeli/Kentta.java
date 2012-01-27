@@ -9,7 +9,7 @@ public class Kentta {
     
     private int[][] kentta = {{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
                               {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1}, 
-                              {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+                              {1, 0, 3, 3, 3, 0, 0, 0, 0, 0, 0, 0, 1},
                               {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
                               {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
                               {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
@@ -21,10 +21,6 @@ public class Kentta {
                               {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}};
     public void Kentta(){
         
-    }
-
-    public int[][] getKentta() {
-        return kentta;
     }
     
     public void setArvo(int x, int y, int value){
