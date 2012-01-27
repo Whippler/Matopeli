@@ -1,5 +1,7 @@
 
 package matopeli;
+
+import java.math.*;
 /**
  * Luokka toteuttaa kentän jossa mato liikkuu
  * @author lammenoj
@@ -13,6 +15,7 @@ public class Kentta {
     private int[][] kentta = {{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
                               {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1}, 
                               {1, 0, 3, 3, 3, 0, 0, 0, 0, 0, 0, 0, 1},
+                              {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
                               {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
                               {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
                               {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
@@ -40,6 +43,10 @@ public class Kentta {
      */
     public int getArvo(int x, int y) {
         return kentta[x][y];
+    }
+    
+    public void setOmena(){
+        int x = (int)(Math.random()*11+1);
     }
     
     public void print(){
