@@ -49,7 +49,6 @@ public class Logiikka {
         for (int i = 0; i < mato.getPituus() - 1; i++) {
             kentta.setArvo(X.get(i), Y.get(i), 3);
         }
-
     }
 
     public void print() {

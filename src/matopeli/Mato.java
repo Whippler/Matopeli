@@ -51,8 +51,6 @@ public class Mato {
             X.addFirst(xcord);
             Y.addFirst(ycord - 1);
         }
-        
-
     }
     /**
      * Metodi poistaa madon hännän

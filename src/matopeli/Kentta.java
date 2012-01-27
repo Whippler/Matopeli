@@ -52,22 +52,27 @@ public class Kentta {
         while (true){
             int x = (int)(Math.random()*11+1);
             int y = (int)(Math.random()*11+1);
+            
             if (this.getArvo(x, y) != 3) {
                 this.setArvo(x, y, 2);
                 return;
             }
-        }
-        
+        }  
+    }
+    
+    public int getLeveys(){
+        return kentta.length;
+    }
+    public int getKorkeus(){
+        return kentta[0].length;
     }
     
     public void print(){
-        for (int i = 0; i<kentta.length;i++){
-            for (int j = 0; j<kentta[i].length;j++){
+        for (int i = 0; i<kentta.length; i++){
+            for (int j = 0; j<kentta[i].length; j++){
                 System.out.print(kentta[i][j] + " ");
             }
             System.out.println("");
         }
-    }
-    
-    
+    }    
 }
