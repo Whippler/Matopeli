@@ -2,10 +2,15 @@
 
 import org.junit.*;
 import static org.junit.Assert.*;
+import matopeli.*;
 
-public class MatoTest {
+/**
+ *
+ * @author lammenoj
+ */
+public class matoTest {
     
-    public MatoTest() {
+    public matoTest() {
     }
 
     @BeforeClass
@@ -18,6 +23,7 @@ public class MatoTest {
     
     @Before
     public void setUp() {
+    
     }
     
     @After
@@ -29,8 +35,20 @@ public class MatoTest {
     // @Test
     // public void hello() {}
     
+    Mato ossi = new Mato();
+    
     @Test
-    public void suunnanMuutos(){
+    public void suunnanVaihto(){
+
+        assertEquals(ossi.getSuunta(), "oikealle");
+        
+        ossi.suunta("alas");
+        
+        assertEquals(ossi.getSuunta(), "alas");
+        
+    }
+    
+    public void madonSijainti(){
         
     }
 }

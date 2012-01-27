@@ -1,6 +1,9 @@
 
 package matopeli;
-
+/**
+ * Luokka toteuttaa kentän jossa mato liikkuu
+ * @author lammenoj
+ */
 public class Kentta {
     // 0 = tyhjä
     // 1 = seinä
@@ -19,14 +22,22 @@ public class Kentta {
                               {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
                               {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
                               {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}};
-    public void Kentta(){
-        
-    }
-    
+
+    /**
+     * 
+     * @param x asetettavan arvon x koordinaatti
+     * @param y asetettavan arvon y koordinaatti
+     * @param value kentälle asetettava arvo
+     */
     public void setArvo(int x, int y, int value){
         kentta[x][y] = value;
     }
-    
+    /**
+     * Metodi palauttaa kentältä yhden arvon
+     * @param x halutun arvon x koordinaatti
+     * @param y halutun arvon y koordinaatti
+     * @return palauttaa kentältä arvon annetuista koordinaateista
+     */
     public int getArvo(int x, int y) {
         return kentta[x][y];
     }
@@ -39,4 +50,6 @@ public class Kentta {
             System.out.println("");
         }
     }
+    
+    
 }

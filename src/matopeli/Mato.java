@@ -1,7 +1,10 @@
 package matopeli;
 
 import java.util.LinkedList;
-
+/**
+ * Luokka toteuttaa Madon ominaisuudet
+ * @author lammenoj
+ */
 public class Mato {
 
     private LinkedList<Integer> X = new LinkedList();
@@ -17,11 +20,16 @@ public class Mato {
         X.add(2, 2);
         suunta = "oikealle";
     }
-
+    /**
+     * Metodi asettaa madolle suunnan
+     * @param suunta merkkijono joka kuvaa suuntaa
+     */
     public void suunta(String suunta) {
         this.suunta = suunta;
     }
-
+    /**
+     * Metodi siirtää matoa eteenpäin
+     */
     public void etene() {
 
         int xcord = X.getFirst();
@@ -46,21 +54,36 @@ public class Mato {
         
 
     }
-
+    /**
+     * Metodi poistaa madon hännän
+     */
     public void poista() {
         X.removeLast();
         Y.removeLast();
     }
-
+    /**
+     * Metodi palauttaa madon X koordinaatit 
+     * @return Palauttaa madon X koordinaatit
+     */
     public LinkedList getX() {
         return X;
     }
-
+    /**
+     * Metodi palauttaa madon Y koordinaatit
+     * @return Palauttaa madon Y koordinaatit
+     */
     public LinkedList getY() {
         return Y;
     }
-
+    /**
+     * 
+     * @return Palauttaa madon pituuden 
+     */
     public int getPituus() {
         return X.size();
     }
+    
+    public String getSuunta(){
+        return suunta;
+    }    
 }
