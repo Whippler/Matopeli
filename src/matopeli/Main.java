@@ -1,11 +1,16 @@
 
 package matopeli;
-
 public class Main {
-
     public static void main(String[] args) {
-        System.out.println("");
-        System.out.println("");
         
+        Mato ossi = new Mato();
+        
+        ossi.print();
+        
+        ossi.etene();
+        ossi.etene();
+        ossi.etene();
+        
+        ossi.print();
     }
 }
