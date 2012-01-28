@@ -2,6 +2,7 @@
 package matopeli;
 
 import java.math.*;
+import java.util.ArrayList;
 /**
  * Luokka toteuttaa kentän jossa mato liikkuu
  * @author lammenoj
@@ -49,15 +50,20 @@ public class Kentta {
      */
     public void setOmena(){
         
-        while (true){
-            int x = (int)(Math.random()*11+1);
-            int y = (int)(Math.random()*11+1);
-            
-            if (this.getArvo(x, y) != 3) {
-                this.setArvo(x, y, 2);
-                return;
+        ArrayList<Integer> X = new ArrayList<Integer>();
+        ArrayList<Integer> Y = new ArrayList<Integer>();
+        
+        for (int i = 0; i<kentta.length; i++){
+            for (int j = 0; j<kentta[i].length; j++){
+                if (this.getArvo(i, j) == 0){
+                    X.add(i);
+                    Y.add(j);
+                }
             }
-        }  
+            
+        }
+        int index = (int) Math.random()*X.size();
+        this.setArvo(X.get(index), Y.get(index), 2);        
     }
     
     public int getLeveys(){
