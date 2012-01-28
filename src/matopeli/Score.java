@@ -1,15 +1,17 @@
 package matopeli;
 
+import java.util.HashMap;
+
 public class Score {
     
     
     
     
-    public ... getTopScore(){
-        
+    public HashMap getTopScores(){
+        return null;
     }
     
-    public setScore(){
+    public void setScore(){
         
     }
 }
