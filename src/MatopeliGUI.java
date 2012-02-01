@@ -3,13 +3,12 @@ import java.awt.Graphics;
 import java.awt.Color;
 import matopeli.*;
 
+public class MatopeliGUI extends javax.swing.JFrame{
 
-public class MatopeliGUI extends javax.swing.JFrame {
-    
     Graphics db;
     Thread paivittaja = null;
     Logiikka peli = new Logiikka();
-    
+
     /**
      * Creates new form NewJFrame
      */
@@ -30,21 +29,22 @@ public class MatopeliGUI extends javax.swing.JFrame {
         Kentta = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                formKeyPressed(evt);
-            }
-        });
 
         scoreLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         scoreLabel.setText("score: 000");
         scoreLabel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
+        Kentta.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                KenttaKeyPressed(evt);
+            }
+        });
+
         javax.swing.GroupLayout KenttaLayout = new javax.swing.GroupLayout(Kentta);
         Kentta.setLayout(KenttaLayout);
         KenttaLayout.setHorizontalGroup(
             KenttaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 351, Short.MAX_VALUE)
+            .addGap(0, 261, Short.MAX_VALUE)
         );
         KenttaLayout.setVerticalGroup(
             KenttaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -56,13 +56,13 @@ public class MatopeliGUI extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(156, Short.MAX_VALUE)
                 .addComponent(scoreLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(153, 153, 153))
             .addGroup(layout.createSequentialGroup()
-                .addGap(23, 23, 23)
+                .addGap(113, 113, 113)
                 .addComponent(Kentta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -75,21 +75,21 @@ public class MatopeliGUI extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    // Näppäimet
-    //--------------------------------------------------------------------------
-    private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
+
+    private void KenttaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KenttaKeyPressed
         // TODO add your handling code here:
-        int nappain = evt.getKeyCode();
-        
-        if (paivittaja == null){
+                int nappain = evt.getKeyCode();
+
+        if (paivittaja == null) {
             paivittaja = new Thread();
             paivittaja.start();
         }
 
-        if (nappain == 38){  // ylänuoli
+        if (nappain == 38) {  // ylänuoli
             peli.asetaSuunta("ylös");
+            System.out.println("ylös");
         }
-        if (nappain == 40){  // alanuoli
+        if (nappain == 40) {  // alanuoli
             peli.asetaSuunta("alas");
         }
         if (nappain == 37) { // vasennuoli
@@ -98,8 +98,8 @@ public class MatopeliGUI extends javax.swing.JFrame {
         if (nappain == 39) { // oikeanuoli
             peli.asetaSuunta("oikealle");
         }
-        
-    }//GEN-LAST:event_formKeyPressed
+
+    }//GEN-LAST:event_KenttaKeyPressed
 
     /**
      * @param args the command line arguments
@@ -137,21 +137,35 @@ public class MatopeliGUI extends javax.swing.JFrame {
          */
         java.awt.EventQueue.invokeLater(new Runnable() {
 
+            @Override
             public void run() {
                 new MatopeliGUI().setVisible(true);
 
             }
         });
+        
     }
-    
-     public void Paint(Graphics g){
-         super.paint(g);
-         
-         int [][] alue = peli.getKentta();
-         g.setColor(Color.BLACK);
-         g.drawRect(0, 0, 5, 5);
+
+    public void KenttaPaint(Graphics g) {
+        super.paint(g);
+
+        int[][] alue = peli.getKentta();
+        
+        int x=0;
+        int y=0;
+
+        for (int i = 0; i < alue.length; i++) {
+            
+            for (int j = 0; j < alue[i].length; j++) {
+                
+                g.setColor(Color.BLACK);
+                g.drawRect(x, y, 5, 5);
+                x = x + 5;
+            }
+            y = y + 5;
+        }
+
     }
-    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Kentta;
     private javax.swing.JLabel scoreLabel;
