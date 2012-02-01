@@ -23,12 +23,11 @@ public class matopeliGUI2 extends javax.swing.JFrame {
         }
 
         @Override
-        public void actionPerformed(ActionEvent ae) {      
+        public void actionPerformed(ActionEvent ae) {
             peli.etene();
             repaint();
         }
     }
-
     /**
      * Creates new form matopeliGUI2
      */
@@ -95,7 +94,7 @@ public class matopeliGUI2 extends javax.swing.JFrame {
     private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
         // TODO add your handling code here:
         int nappain = evt.getKeyCode();
-        
+
         System.out.println(nappain);
 
         if (nappain == 38) {  // ylänuoli
@@ -111,7 +110,6 @@ public class matopeliGUI2 extends javax.swing.JFrame {
             peli.asetaSuunta("oikealle");
         }
         if (nappain == 32) { // Space
-
             kello.start();
         }
     }//GEN-LAST:event_formKeyPressed
@@ -156,12 +154,11 @@ public class matopeliGUI2 extends javax.swing.JFrame {
                 new matopeliGUI2().setVisible(true);
             }
         });
-      
+
     }
 
-    
-    public void Kenttapaint(Graphics g){
-        
+    public void Kenttapaint(Graphics g) {
+
         super.paint(g);
 
         int[][] alue = peli.getKentta();
