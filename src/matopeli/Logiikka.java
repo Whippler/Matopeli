@@ -41,7 +41,7 @@ public class Logiikka {
         if (ruutu != 2) {
             kentta.setArvo(X.getLast(), Y.getLast(), 0);
             mato.poista();
-        } else {
+        } else if (ruutu ==2){
             kentta.setOmena();
         }
         

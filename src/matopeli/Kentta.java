@@ -1,8 +1,8 @@
 
 package matopeli;
 
-import java.math.*;
 import java.util.ArrayList;
+import java.util.Random;
 /**
  * Luokka toteuttaa kentän jossa mato liikkuu
  * @author lammenoj
@@ -53,6 +53,8 @@ public class Kentta {
         ArrayList<Integer> X = new ArrayList<Integer>();
         ArrayList<Integer> Y = new ArrayList<Integer>();
         
+        Random arpa = new Random();
+        
         for (int i = 0; i<kentta.length; i++){
             for (int j = 0; j<kentta[i].length; j++){
                 if (this.getArvo(i, j) == 0){
@@ -62,8 +64,10 @@ public class Kentta {
             }
             
         }
-        int index = (int) Math.random()*X.size();
-        this.setArvo(X.get(index), Y.get(index), 2);        
+        int index = arpa.nextInt(X.size());
+        this.setArvo(X.get(index), Y.get(index), 2);
+        X.clear();
+        Y.clear();
     }
     
     public int getLeveys(){
