@@ -1,13 +1,14 @@
 
-
-
 import java.awt.Graphics;
+import java.awt.Color;
+import matopeli.*;
 
 
 public class MatopeliGUI extends javax.swing.JFrame {
     
     Graphics db;
     Thread paivittaja = null;
+    Logiikka peli = new Logiikka();
     
     /**
      * Creates new form NewJFrame
@@ -86,16 +87,16 @@ public class MatopeliGUI extends javax.swing.JFrame {
         }
 
         if (nappain == 38){  // ylänuoli
-            System.out.println("ylös");
+            peli.asetaSuunta("ylös");
         }
         if (nappain == 40){  // alanuoli
-            System.out.println("alas");
+            peli.asetaSuunta("alas");
         }
         if (nappain == 37) { // vasennuoli
-            System.out.println("vasen");
+            peli.asetaSuunta("vasemmalle");
         }
         if (nappain == 39) { // oikeanuoli
-            System.out.println("oikea");
+            peli.asetaSuunta("oikealle");
         }
         
     }//GEN-LAST:event_formKeyPressed
@@ -138,10 +139,19 @@ public class MatopeliGUI extends javax.swing.JFrame {
 
             public void run() {
                 new MatopeliGUI().setVisible(true);
-                
+
             }
         });
     }
+    
+     public void Paint(Graphics g){
+         super.paint(g);
+         
+         int [][] alue = peli.getKentta();
+         g.setColor(Color.BLACK);
+         g.drawRect(0, 0, 5, 5);
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Kentta;
     private javax.swing.JLabel scoreLabel;

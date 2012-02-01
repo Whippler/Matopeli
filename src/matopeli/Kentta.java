@@ -73,6 +73,10 @@ public class Kentta {
         return kentta[0].length;
     }
     
+    public int[][] getKentta(){
+        return kentta;
+    }
+    
     public void print(){
         for (int i = 0; i<kentta.length; i++){
             for (int j = 0; j<kentta[i].length; j++){

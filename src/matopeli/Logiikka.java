@@ -50,6 +50,9 @@ public class Logiikka {
             kentta.setArvo(X.get(i), Y.get(i), 3);
         }
     }
+    public int[][] getKentta(){
+        return kentta.getKentta();
+    }
 
     public void print() {
         kentta.print();
