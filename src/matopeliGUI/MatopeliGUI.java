@@ -1,10 +1,4 @@
 package matopeliGUI;
-
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
  *
  * @author lammenoj
@@ -139,22 +133,6 @@ public class MatopeliGUI extends javax.swing.JFrame {
         });
 
     }
-
-//    public void paint(Graphics g) {
-//
-//        super.paint(g);
-//
-//        LinkedList<Integer> x = peli.getMatoX();
-//        LinkedList<Integer> y = peli.getMatoY();
-//
-//        g.setColor(Color.RED);
-//
-//        for (int i = 0; i < x.size(); i++) {
-//            g.fillRect(y.get(i) * 10 + 50, x.get(i) * 10 + 50, 9, 9);
-//
-//        }
-//  
-//    }
     
     public void paint(Graphics g) {
         
