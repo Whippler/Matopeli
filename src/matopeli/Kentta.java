@@ -22,7 +22,7 @@ public class Kentta {
      * @param value kentälle asetettava arvo
      */
     
-    public void alustaKentta(){
+    public void alustaKentta(String nimi){
         int[][] classic = {{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
                            {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1}, 
                            {1, 0, 3, 3, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
@@ -45,8 +45,8 @@ public class Kentta {
                            {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
                            {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
                            {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}};
-        
-        this.kentta = classic;
+        if (nimi.equals("classic"))
+            this.kentta = classic;
     }
     
     public void setArvo(int x, int y, int value){
@@ -87,10 +87,10 @@ public class Kentta {
     }
     
     public int getLeveys(){
-        return kentta.length;
+        return kentta.length-1;
     }
     public int getKorkeus(){
-        return kentta[0].length;
+        return kentta[0].length-1;
     }
     
     public int[][] getKentta(){

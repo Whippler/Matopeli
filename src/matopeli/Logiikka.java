@@ -14,7 +14,7 @@ public class Logiikka {
     Pisteet pisteet = new Pisteet();
 
     public Logiikka() {
-        kentta.alustaKentta();
+        this.reset();
     }
 
     /**
@@ -77,7 +77,7 @@ public class Logiikka {
     }
     
     public void reset(){
-        kentta.alustaKentta();
-        mato.alustaMato();
+        kentta.alustaKentta("classic");
+        mato.alustaMato(kentta.getKorkeus(), kentta.getLeveys());
     }
 }

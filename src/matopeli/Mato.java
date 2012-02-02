@@ -12,14 +12,19 @@ public class Mato {
     private LinkedList<Integer> X = new LinkedList();
     private LinkedList<Integer> Y = new LinkedList();
     private String suunta;
-
+    private int maxY;
+    private int maxX;
+            
     public Mato() {
-        this.alustaMato();
+        
     }
 
-    public void alustaMato() {
+    public void alustaMato(int x, int y) {
         Y.clear();
         X.clear();
+        
+        maxX = x;
+        maxY = y;        
 
         Y.add(0, 4);
         X.add(0, 2);
@@ -28,6 +33,8 @@ public class Mato {
         Y.add(2, 2);
         X.add(2, 2);
         suunta = "oikealle";
+        
+        
     }
 
     /**
@@ -50,7 +57,7 @@ public class Mato {
         if (this.suunta.equals("oikealle")) {
 
             X.addFirst(xcord);
-            if (ycord == 21) {
+            if (ycord == maxX) {
                 Y.addFirst(0);
             } else {
                 Y.addFirst(ycord + 1);
@@ -58,7 +65,7 @@ public class Mato {
             
         } else if (this.suunta.equals("alas")) {
 
-            if (xcord == 21) {
+            if (xcord == maxY) {
                 X.addFirst(0);
             } else {
                 X.addFirst(xcord + 1);
@@ -69,7 +76,7 @@ public class Mato {
             
             X.addFirst(xcord);
             if (ycord == 0) {
-                Y.addFirst(21);
+                Y.addFirst(maxX);
             } else {
                 Y.addFirst(ycord - 1);
             }
@@ -77,7 +84,7 @@ public class Mato {
         } else if (this.suunta.equals("ylös")) {
 
             if (xcord == 0) {
-                X.addFirst(21);
+                X.addFirst(maxY);
             } else {
                 X.addFirst(xcord - 1);
             }
