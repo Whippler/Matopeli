@@ -88,11 +88,9 @@ public class matopeliGUI2 extends javax.swing.JFrame {
             peli.asetaSuunta("vasemmalle");
         }else if (nappain == 39) { // oikeanuoli
             peli.asetaSuunta("oikealle");
-        }else if (nappain == 32) { // Space
-            kello.start();
-        }else if (nappain == 19 && kello.isRunning()==true) { //pause
+        }else if (nappain == 32 && kello.isRunning()==true) { //Space
             kello.stop();
-        }else if (nappain == 19 && kello.isRunning()==false) { //pause
+        }else if (nappain == 32 && kello.isRunning()==false) { //Space
             kello.start();
         }
     }//GEN-LAST:event_formKeyPressed
