@@ -67,8 +67,4 @@ public class Logiikka {
     public LinkedList getMatoY() {
         return mato.getY();
     }
-
-    public void print() {
-        kentta.print();
-    }
 }
