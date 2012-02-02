@@ -16,7 +16,7 @@ import java.awt.event.ActionListener;
 import javax.swing.Timer;
 import matopeli.*;
 
-public class matopeliGUI2 extends javax.swing.JFrame {
+public class MatopeliGUI extends javax.swing.JFrame {
 
     private class Kuuntelija implements ActionListener {
 
@@ -30,6 +30,7 @@ public class matopeliGUI2 extends javax.swing.JFrame {
             } else {
                 kello.stop();
                 peli.reset();
+                repaint();
             }
             
         }
@@ -41,7 +42,7 @@ public class matopeliGUI2 extends javax.swing.JFrame {
     Logiikka peli = new Logiikka();
     Timer kello;
 
-    public matopeliGUI2() {
+    public MatopeliGUI() {
         initComponents();
         kello = new Timer(100, new Kuuntelija());
     }
@@ -80,15 +81,13 @@ public class matopeliGUI2 extends javax.swing.JFrame {
         // TODO add your handling code here:
         int nappain = evt.getKeyCode();
 
-        System.out.println(nappain);
-
-        if (nappain == 38) {  // ylänuoli
+        if (nappain == 38 && kello.isRunning()==true) {  // ylänuoli
             peli.asetaSuunta("ylös");
-        } else if (nappain == 40) {  // alanuoli
+        } else if (nappain == 40 && kello.isRunning()==true) {  // alanuoli
             peli.asetaSuunta("alas");
-        } else if (nappain == 37) { // vasennuoli
+        } else if (nappain == 37 && kello.isRunning()==true) { // vasennuoli
             peli.asetaSuunta("vasemmalle");
-        }else if (nappain == 39) { // oikeanuoli
+        }else if (nappain == 39 && kello.isRunning()==true) { // oikeanuoli
             peli.asetaSuunta("oikealle");
         }else if (nappain == 32 && kello.isRunning()==true) { //Space
             kello.stop();
@@ -118,13 +117,13 @@ public class matopeliGUI2 extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(matopeliGUI2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MatopeliGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(matopeliGUI2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MatopeliGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(matopeliGUI2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MatopeliGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(matopeliGUI2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MatopeliGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -135,7 +134,7 @@ public class matopeliGUI2 extends javax.swing.JFrame {
 
             @Override
             public void run() {
-                new matopeliGUI2().setVisible(true);
+                new MatopeliGUI().setVisible(true);
             }
         });
 
