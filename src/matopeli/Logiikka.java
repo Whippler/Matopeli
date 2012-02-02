@@ -14,6 +14,7 @@ public class Logiikka {
     Pisteet pisteet = new Pisteet();
 
     public Logiikka() {
+        kentta.alustaKentta();
     }
 
     /**
@@ -22,6 +23,9 @@ public class Logiikka {
      * @param suunta Annetaan suunta merkkijonona, mihin mato on seuraavaksi
      * menossa
      */
+    
+    // LUOKAN MATO HALLINTA
+    //--------------------------------------------------------------------------
     public void asetaSuunta(String suunta) {
         mato.suunta(suunta);
     }
@@ -45,7 +49,7 @@ public class Logiikka {
         } else if (ruutu == 2) {
             kentta.setOmena();
         }
-        if (ruutu == 1 || ruutu == 3){
+        if (ruutu == 1 || ruutu == 3) {
             arvo = false;
         }
 
@@ -53,12 +57,8 @@ public class Logiikka {
         for (int i = 0; i < mato.getPituus() - 1; i++) {
             kentta.setArvo(X.get(i), Y.get(i), 3);
         }
-        
-        return arvo;
-    }
 
-    public int[][] getKentta() {
-        return kentta.getKentta();
+        return arvo;
     }
 
     public LinkedList getMatoX() {
@@ -67,5 +67,17 @@ public class Logiikka {
 
     public LinkedList getMatoY() {
         return mato.getY();
+    }
+    
+    //LUOKAN KENTTA HALLINTA
+    //--------------------------------------------------------------------------
+
+    public int[][] getKentta() {
+        return kentta.getKentta();
+    }
+    
+    public void reset(){
+        kentta.alustaKentta();
+        mato.alustaMato();
     }
 }

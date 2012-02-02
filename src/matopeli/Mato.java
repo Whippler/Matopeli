@@ -12,6 +12,13 @@ public class Mato {
     private String suunta;
 
     public Mato() {
+        this.alustaMato();
+    }
+    
+    public void alustaMato(){
+        Y.clear();
+        X.clear();
+        
         Y.add(0, 4);
         X.add(0, 2);
         Y.add(1, 3);

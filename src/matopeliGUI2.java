@@ -12,7 +12,6 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.Timer;
-import java.util.LinkedList;
 import matopeli.*;
 
 public class matopeliGUI2 extends javax.swing.JFrame {
@@ -28,6 +27,7 @@ public class matopeliGUI2 extends javax.swing.JFrame {
                 repaint();
             } else {
                 kello.stop();
+                peli.reset();
             }
             
         }
