@@ -39,7 +39,6 @@ public class MatopeliGUI extends javax.swing.JFrame {
     public MatopeliGUI() {
         initComponents();
         kello = new Timer(100, new Kuuntelija());
-        jLabel1.setText("Score: 0");
     }
 
     /**
