@@ -28,10 +28,10 @@ public class Logiikka {
     /**
      * Metodi siirtää matoa eteenpäin
      */
-    public void etene() {
+    public boolean etene() {
 
         mato.etene();
-
+        boolean arvo = true;
         LinkedList<Integer> X = mato.getX();
         LinkedList<Integer> Y = mato.getY();
 
@@ -41,17 +41,30 @@ public class Logiikka {
         if (ruutu != 2) {
             kentta.setArvo(X.getLast(), Y.getLast(), 0);
             mato.poista();
-        } else if (ruutu ==2){
+        } else if (ruutu == 2) {
             kentta.setOmena();
+        } else if (ruutu == 1 || ruutu == 3){
+            arvo = false;
         }
-        
-        // piirtää madon kentälle
+
+        // asettaa madon kentälle
         for (int i = 0; i < mato.getPituus() - 1; i++) {
             kentta.setArvo(X.get(i), Y.get(i), 3);
         }
+        
+        return arvo;
     }
-    public int[][] getKentta(){
+
+    public int[][] getKentta() {
         return kentta.getKentta();
+    }
+
+    public LinkedList getMatoX() {
+        return mato.getX();
+    }
+
+    public LinkedList getMatoY() {
+        return mato.getY();
     }
 
     public void print() {
