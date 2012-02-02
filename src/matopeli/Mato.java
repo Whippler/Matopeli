@@ -55,7 +55,7 @@ public class Mato {
     /**
      * Metodi poistaa madon hännän
      */
-    public void poista() {
+    public void poistaViimeinen() {
         X.removeLast();
         Y.removeLast();
     }

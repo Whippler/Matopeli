@@ -40,10 +40,11 @@ public class Logiikka {
         // poistaa hännän
         if (ruutu != 2) {
             kentta.setArvo(X.getLast(), Y.getLast(), 0);
-            mato.poista();
+            mato.poistaViimeinen();
         } else if (ruutu == 2) {
             kentta.setOmena();
-        } else if (ruutu == 1 || ruutu == 3){
+        }
+        if (ruutu == 1 || ruutu == 3){
             arvo = false;
         }
 

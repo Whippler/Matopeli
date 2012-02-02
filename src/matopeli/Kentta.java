@@ -33,6 +33,10 @@ public class Kentta {
      * @param y asetettavan arvon y koordinaatti
      * @param value kentälle asetettava arvo
      */
+    public void AlustaKentta(){
+        
+    }
+    
     public void setArvo(int x, int y, int value){
         kentta[x][y] = value;
     }

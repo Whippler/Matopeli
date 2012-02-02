@@ -40,7 +40,7 @@ public class matopeliGUI2 extends javax.swing.JFrame {
 
     public matopeliGUI2() {
         initComponents();
-        kello = new Timer(500, new Kuuntelija());
+        kello = new Timer(100, new Kuuntelija());
     }
 
     /**
