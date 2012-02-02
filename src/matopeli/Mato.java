@@ -47,27 +47,34 @@ public class Mato {
         int xcord = X.getFirst();
         int ycord = Y.getFirst();
 
-        if (this.suunta.equals("alas")) {
+        if (this.suunta.equals("oikealle")) {
+
+            X.addFirst(xcord);
+            if (ycord == 21) {
+                Y.addFirst(0);
+            } else {
+                Y.addFirst(ycord + 1);
+            }
+            
+        } else if (this.suunta.equals("alas")) {
 
             if (xcord == 21) {
                 X.addFirst(0);
             } else {
                 X.addFirst(xcord + 1);
             }
-
             Y.addFirst(ycord);
-        }
-        if (this.suunta.equals("oikealle")) {
-
+            
+        } else if (this.suunta.equals("vasemmalle")) {
+            
             X.addFirst(xcord);
-
-            if (ycord == 21) {
-                Y.addFirst(0);
+            if (ycord == 0) {
+                Y.addFirst(21);
             } else {
-                Y.addFirst(ycord + 1);
+                Y.addFirst(ycord - 1);
             }
-        }
-        if (this.suunta.equals("ylös")) {
+            
+        } else if (this.suunta.equals("ylös")) {
 
             if (xcord == 0) {
                 X.addFirst(21);
@@ -75,15 +82,6 @@ public class Mato {
                 X.addFirst(xcord - 1);
             }
             Y.addFirst(ycord);
-        }
-        if (this.suunta.equals("vasemmalle")) {
-            X.addFirst(xcord);
-
-            if (ycord == 0) {
-                Y.addFirst(21);
-            } else {
-                Y.addFirst(ycord - 1);
-            }
         }
     }
 
