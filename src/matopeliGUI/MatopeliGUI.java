@@ -150,7 +150,7 @@ public class MatopeliGUI extends javax.swing.JFrame {
                 } else {
                     g.setColor(Color.pink);
                 }
-                g.fillRect(j*10+30, i*10+50, 9, 9);
+                g.fillRect(j*10+30, i*10+50, 10, 10);
             }
         }
     }
