@@ -11,6 +11,7 @@ public class Logiikka {
 
     Kentta kentta = new Kentta();
     Mato mato = new Mato();
+    Pisteet pisteet = new Pisteet();
 
     public Logiikka() {
     }
