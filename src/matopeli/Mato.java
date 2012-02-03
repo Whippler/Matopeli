@@ -14,17 +14,16 @@ public class Mato {
     private String suunta;
     private int maxY;
     private int maxX;
-            
+
     public Mato() {
-        
     }
 
     public void alustaMato(int x, int y) {
         Y.clear();
         X.clear();
-        
+
         maxX = x;
-        maxY = y;        
+        maxY = y;
 
         Y.add(0, 4);
         X.add(0, 2);
@@ -33,8 +32,8 @@ public class Mato {
         Y.add(2, 2);
         X.add(2, 2);
         suunta = "oikealle";
-        
-        
+
+
     }
 
     /**
@@ -43,6 +42,13 @@ public class Mato {
      * @param suunta merkkijono joka kuvaa suuntaa
      */
     public void suunta(String suunta) {
+        if(this.suunta.equals("oikealle") && suunta.equals("vasemmalle") ||
+           this.suunta.equals("vasemmalle") && suunta.equals("oikealle") ||
+           this.suunta.equals("ylös") && suunta.equals("alas") ||
+           this.suunta.equals("alas") && suunta.equals("ylös")){
+           return;
+        }
+        
         this.suunta = suunta;
     }
 
@@ -62,7 +68,7 @@ public class Mato {
             } else {
                 Y.addFirst(ycord + 1);
             }
-            
+
         } else if (this.suunta.equals("alas")) {
 
             if (xcord == maxY) {
@@ -71,16 +77,16 @@ public class Mato {
                 X.addFirst(xcord + 1);
             }
             Y.addFirst(ycord);
-            
+
         } else if (this.suunta.equals("vasemmalle")) {
-            
+
             X.addFirst(xcord);
             if (ycord == 0) {
                 Y.addFirst(maxX);
             } else {
                 Y.addFirst(ycord - 1);
             }
-            
+
         } else if (this.suunta.equals("ylös")) {
 
             if (xcord == 0) {

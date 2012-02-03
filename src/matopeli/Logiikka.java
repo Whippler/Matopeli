@@ -14,7 +14,7 @@ public class Logiikka {
     Pisteet pisteet = new Pisteet();
 
     public Logiikka() {
-        this.reset();
+        this.resetKentta();
     }
 
     /**
@@ -36,10 +36,10 @@ public class Logiikka {
     public boolean etene() {
 
         mato.etene();
+
         boolean arvo = true;
         LinkedList<Integer> X = mato.getX();
         LinkedList<Integer> Y = mato.getY();
-
         int ruutu = kentta.getArvo(X.getFirst(), Y.getFirst());
 
         // poistaa hännän
@@ -48,6 +48,7 @@ public class Logiikka {
             mato.poistaViimeinen();
         } else if (ruutu == 2) {
             kentta.setOmena();
+            pisteet.addPisteet();
         }
         if (ruutu == 1 || ruutu == 3) {
             arvo = false;
@@ -76,8 +77,23 @@ public class Logiikka {
         return kentta.getKentta();
     }
     
-    public void reset(){
+    public void resetKentta(){
         kentta.alustaKentta("classic");
         mato.alustaMato(kentta.getKorkeus(), kentta.getLeveys());
+    }
+    
+    //Luokan PISTEET HALLINTA
+    //--------------------------------------------------------------------------
+    
+    public int pisteet(){
+        return pisteet.getPisteet();
+    }
+    
+    public void resetPisteet(){
+        pisteet.nollaa();
+    }
+    
+    public int pisteetMax(){
+        return pisteet.getPisteetMax();
     }
 }

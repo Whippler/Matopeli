@@ -1,4 +1,5 @@
 package matopeliGUI;
+
 /**
  *
  * @author lammenoj
@@ -7,10 +8,15 @@ import java.awt.Graphics;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
 import javax.swing.Timer;
 import matopeli.*;
 
 public class MatopeliGUI extends javax.swing.JFrame {
+
+    //Graphics db;
+    Logiikka peli = new Logiikka();
+    Timer kello;
 
     private class Kuuntelija implements ActionListener {
 
@@ -19,26 +25,26 @@ public class MatopeliGUI extends javax.swing.JFrame {
 
         @Override
         public void actionPerformed(ActionEvent ae) {
-            if ( peli.etene() == true){
+            if (peli.etene() == true) {
                 repaint();
             } else {
                 kello.stop();
-                peli.reset();
+                peli.resetKentta();
+                peli.resetPisteet();
+                showScore();
                 repaint();
+
             }
-            
         }
     }
+
     /**
      * Creates new form matopeliGUI2
      */
-    Graphics db;
-    Logiikka peli = new Logiikka();
-    Timer kello;
-
     public MatopeliGUI() {
         initComponents();
         kello = new Timer(100, new Kuuntelija());
+
     }
 
     /**
@@ -51,6 +57,8 @@ public class MatopeliGUI extends javax.swing.JFrame {
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
+        scoreLabel = new javax.swing.JLabel();
+        TopScoreLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Matopeli");
@@ -62,15 +70,35 @@ public class MatopeliGUI extends javax.swing.JFrame {
             }
         });
 
+        scoreLabel.setLabelFor(this);
+        scoreLabel.setText("Score");
+        scoreLabel.setMaximumSize(new java.awt.Dimension(37, 20));
+        scoreLabel.setMinimumSize(new java.awt.Dimension(37, 20));
+        scoreLabel.setPreferredSize(new java.awt.Dimension(37, 20));
+
+        TopScoreLabel.setText("TopScore");
+        TopScoreLabel.setMaximumSize(new java.awt.Dimension(60, 20));
+        TopScoreLabel.setMinimumSize(new java.awt.Dimension(60, 20));
+        TopScoreLabel.setPreferredSize(new java.awt.Dimension(60, 20));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 278, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(18, Short.MAX_VALUE)
+                .addComponent(scoreLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(TopScoreLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(21, 21, 21))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 241, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(scoreLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TopScoreLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 221, Short.MAX_VALUE))
         );
 
         pack();
@@ -80,17 +108,17 @@ public class MatopeliGUI extends javax.swing.JFrame {
         // TODO add your handling code here:
         int nappain = evt.getKeyCode();
 
-        if (nappain == 38 && kello.isRunning()==true) {  // ylänuoli
+        if (nappain == 38 && kello.isRunning() == true) {  // ylänuoli
             peli.asetaSuunta("ylös");
-        } else if (nappain == 40 && kello.isRunning()==true) {  // alanuoli
+        } else if (nappain == 40 && kello.isRunning() == true) {  // alanuoli
             peli.asetaSuunta("alas");
-        } else if (nappain == 37 && kello.isRunning()==true) { // vasennuoli
+        } else if (nappain == 37 && kello.isRunning() == true) { // vasennuoli
             peli.asetaSuunta("vasemmalle");
-        }else if (nappain == 39 && kello.isRunning()==true) { // oikeanuoli
+        } else if (nappain == 39 && kello.isRunning() == true) { // oikeanuoli
             peli.asetaSuunta("oikealle");
-        }else if (nappain == 32 && kello.isRunning()==true) { //Space
+        } else if (nappain == 32 && kello.isRunning() == true) { //Space
             kello.stop();
-        }else if (nappain == 32 && kello.isRunning()==false) { //Space
+        } else if (nappain == 32 && kello.isRunning() == false) { //Space
             kello.start();
         }
     }//GEN-LAST:event_formKeyPressed
@@ -138,27 +166,36 @@ public class MatopeliGUI extends javax.swing.JFrame {
         });
 
     }
-    
+
+    @Override
     public void paint(Graphics g) {
-        
+        super.paint(g);
+        scoreLabel.setText("Score: " + peli.pisteet());
+        TopScoreLabel.setText("Top Score: " + peli.pisteetMax());
         int[][] alue = peli.getKentta();
-        
-        for(int i = 0; i < alue.length; i++){
-            for(int j = 0; j < alue[i].length; j++){
-                if (alue[i][j] == 0){
+
+        for (int i = 0; i < alue.length; i++) {
+            for (int j = 0; j < alue[i].length; j++) {
+                if (alue[i][j] == 0) {
                     g.setColor(Color.WHITE);
-                } else if(alue[i][j] == 1){
+                } else if (alue[i][j] == 1) {
                     g.setColor(Color.BLACK);
-                } else if(alue[i][j] == 3){
+                } else if (alue[i][j] == 3) {
                     g.setColor(Color.red);
                 } else {
                     g.setColor(Color.pink);
                 }
-                g.fillRect(j*10+30, i*10+50, 10, 10);
+                g.fillRect(j * 10 + 30, i * 10 + 50, 10, 10);
             }
         }
     }
+
+    public void showScore() {
+        JOptionPane.showMessageDialog(this, "lol");
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel TopScoreLabel;
     private javax.swing.JPopupMenu jPopupMenu1;
+    private javax.swing.JLabel scoreLabel;
     // End of variables declaration//GEN-END:variables
 }
