@@ -14,7 +14,6 @@ import matopeli.*;
 
 public class MatopeliGUI extends javax.swing.JFrame {
 
-    //Graphics db;
     Logiikka peli = new Logiikka();
     Timer kello;
 
@@ -31,7 +30,7 @@ public class MatopeliGUI extends javax.swing.JFrame {
                 repaint();
             } else {
                 kello.stop();
-               // showScore();
+                showScore();
                 if (testi == 0){
                     peli.reset("cross");
                     testi = 1;
@@ -70,8 +69,8 @@ public class MatopeliGUI extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Matopeli");
+        setBackground(new java.awt.Color(204, 204, 204));
         setPreferredSize(new java.awt.Dimension(280, 300));
-        setResizable(false);
         addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 formKeyPressed(evt);
@@ -178,7 +177,7 @@ public class MatopeliGUI extends javax.swing.JFrame {
     @Override
     public void paint(Graphics g) {
         
-        super.paint(g);
+        //super.paint(g);
         
         scoreLabel.setText("Score: " + peli.pisteet());
         TopScoreLabel.setText("Top Score: " + peli.pisteetMax());
