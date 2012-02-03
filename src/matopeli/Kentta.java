@@ -30,7 +30,7 @@ public class Kentta {
     }
     
     public void alustaKentta(String nimi){
-        this.kentta = kentat.get(nimi);
+        this.kentta = kentat.get("classic");
         this.setOmena();    
     }
     
