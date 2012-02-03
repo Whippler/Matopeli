@@ -29,9 +29,10 @@ public class MatopeliGUI extends javax.swing.JFrame {
                 repaint();
             } else {
                 kello.stop();
+                showScore();
                 peli.resetKentta();
                 peli.resetPisteet();
-                showScore();
+                
                 repaint();
 
             }
@@ -44,7 +45,6 @@ public class MatopeliGUI extends javax.swing.JFrame {
     public MatopeliGUI() {
         initComponents();
         kello = new Timer(100, new Kuuntelija());
-
     }
 
     /**
@@ -86,10 +86,10 @@ public class MatopeliGUI extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(18, Short.MAX_VALUE)
-                .addComponent(scoreLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(TopScoreLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(36, Short.MAX_VALUE)
+                .addComponent(scoreLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(TopScoreLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(21, 21, 21))
         );
         layout.setVerticalGroup(
@@ -185,7 +185,7 @@ public class MatopeliGUI extends javax.swing.JFrame {
                 } else {
                     g.setColor(Color.pink);
                 }
-                g.fillRect(j * 10 + 30, i * 10 + 50, 10, 10);
+                g.fillRect(j * 10 + 30, i * 10 + 50, 9, 9);
             }
         }
     }

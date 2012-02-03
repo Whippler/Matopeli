@@ -16,6 +16,9 @@ public class Logiikka {
     public Logiikka() {
         this.resetKentta();
     }
+    
+    // LUOKAN MATO HALLINTA
+    //--------------------------------------------------------------------------
 
     /**
      * Tällä metodilla valitaan madolle etenemissuunta
@@ -23,9 +26,6 @@ public class Logiikka {
      * @param suunta Annetaan suunta merkkijonona, mihin mato on seuraavaksi
      * menossa
      */
-    
-    // LUOKAN MATO HALLINTA
-    //--------------------------------------------------------------------------
     public void asetaSuunta(String suunta) {
         mato.suunta(suunta);
     }
