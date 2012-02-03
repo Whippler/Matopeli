@@ -23,6 +23,8 @@ public class MatopeliGUI extends javax.swing.JFrame {
         public Kuuntelija() {
         }
 
+        private int testi = 0;
+        
         @Override
         public void actionPerformed(ActionEvent ae) {
             if (peli.etene() == true) {
@@ -30,9 +32,16 @@ public class MatopeliGUI extends javax.swing.JFrame {
             } else {
                 kello.stop();
                // showScore();
-                peli.reset("cross");
+                if (testi == 0){
+                    peli.reset("cross");
+                    testi = 1;
+                } else {
+                    peli.reset("classic");
+                    testi = 0;
+                }
+                
     
-                repaint();
+                //repaint();
 
             }
         }
@@ -168,9 +177,12 @@ public class MatopeliGUI extends javax.swing.JFrame {
 
     @Override
     public void paint(Graphics g) {
+        
         super.paint(g);
+        
         scoreLabel.setText("Score: " + peli.pisteet());
         TopScoreLabel.setText("Top Score: " + peli.pisteetMax());
+        
         int[][] alue = peli.getKentta();
 
         for (int i = 0; i < alue.length; i++) {

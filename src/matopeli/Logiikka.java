@@ -16,16 +16,16 @@ public class Logiikka {
     public Logiikka() {
         this.reset("classic");
     }
-    
-        public void reset(String nimi){
+
+    public void reset(String nimi) {
+
         kentta.alustaKentta(nimi);
         mato.alustaMato(kentta.getKorkeus(), kentta.getLeveys());
         pisteet.nollaa();
     }
-    
+
     // LUOKAN MATO HALLINTA
     //--------------------------------------------------------------------------
-
     /**
      * Tällä metodilla valitaan madolle etenemissuunta
      *
@@ -68,29 +68,26 @@ public class Logiikka {
         return arvo;
     }
 
-    public LinkedList getMatoX() {
-        return mato.getX();
-    }
-
-    public LinkedList getMatoY() {
-        return mato.getY();
-    }
+//    public LinkedList getMatoX() {
+//        return mato.getX();
+//    }
+//    public LinkedList getMatoY() {
+//        return mato.getY();
+//    }
     
     //LUOKAN KENTTA HALLINTA
     //--------------------------------------------------------------------------
-
     public int[][] getKentta() {
         return kentta.getKentta();
     }
-    
+
     //Luokan PISTEET HALLINTA
     //--------------------------------------------------------------------------
-    
-    public int pisteet(){
+    public int pisteet() {
         return pisteet.getPisteet();
     }
-    
-    public int pisteetMax(){
+
+    public int pisteetMax() {
         return pisteet.getPisteetMax();
     }
 }
