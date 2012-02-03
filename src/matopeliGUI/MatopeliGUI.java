@@ -29,10 +29,9 @@ public class MatopeliGUI extends javax.swing.JFrame {
                 repaint();
             } else {
                 kello.stop();
-                showScore();
-                peli.resetKentta();
-                peli.resetPisteet();
-                
+               // showScore();
+                peli.reset("cross");
+    
                 repaint();
 
             }

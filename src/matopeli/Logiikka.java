@@ -14,7 +14,13 @@ public class Logiikka {
     Pisteet pisteet = new Pisteet();
 
     public Logiikka() {
-        this.resetKentta();
+        this.reset("classic");
+    }
+    
+        public void reset(String nimi){
+        kentta.alustaKentta(nimi);
+        mato.alustaMato(kentta.getKorkeus(), kentta.getLeveys());
+        pisteet.nollaa();
     }
     
     // LUOKAN MATO HALLINTA
@@ -77,20 +83,11 @@ public class Logiikka {
         return kentta.getKentta();
     }
     
-    public void resetKentta(){
-        kentta.alustaKentta("classic");
-        mato.alustaMato(kentta.getKorkeus(), kentta.getLeveys());
-    }
-    
     //Luokan PISTEET HALLINTA
     //--------------------------------------------------------------------------
     
     public int pisteet(){
         return pisteet.getPisteet();
-    }
-    
-    public void resetPisteet(){
-        pisteet.nollaa();
     }
     
     public int pisteetMax(){
