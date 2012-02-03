@@ -41,7 +41,7 @@ public class MatopeliGUI extends javax.swing.JFrame {
                 }
                 
     
-                //repaint();
+                repaint();
 
             }
         }

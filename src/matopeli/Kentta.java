@@ -16,7 +16,6 @@ public class Kentta {
     
     private int[][] kentta;
     private KenttaGeneraattori kenttaGen = new KenttaGeneraattori();
-    private HashMap<String, int[][]> kentat = new HashMap<String, int[][]>();
 
     /**
      * 
@@ -26,11 +25,13 @@ public class Kentta {
      */
     
     public Kentta(){
-        kentat = kenttaGen.getKentat();
+
     }
     
     public void alustaKentta(String nimi){
-        this.kentta = kentat.get(nimi);
+        this.kentta = kenttaGen.getKentta(nimi);
+        
+
         this.setOmena();    
     }
     
