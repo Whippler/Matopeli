@@ -38,7 +38,7 @@ public class MatopeliGUI extends javax.swing.JFrame {
             peli.reset(nimi);
         }
 
-        public void asetaKentta() {
+        public void reset() {
             peli.reset(kentta);
         }
 
@@ -59,7 +59,6 @@ public class MatopeliGUI extends javax.swing.JFrame {
 
             if (peli.etene() == true) {
                 repaint();
-
                 if (pelimuoto == 1) {
                     delay = delay + 1;
                     if (delay == 5 && nopeus > 20) {
@@ -69,7 +68,6 @@ public class MatopeliGUI extends javax.swing.JFrame {
                     }
                     kello.setDelay(nopeus);
                 }
-
             } else {
                 kello.stop();
                 showScore();
@@ -78,9 +76,7 @@ public class MatopeliGUI extends javax.swing.JFrame {
                 if (pelimuoto == 1) {
                     this.asetaKasvavaNopeus();
                 }
-
                 repaint();
-
             }
         }
     }
@@ -93,7 +89,6 @@ public class MatopeliGUI extends javax.swing.JFrame {
         initComponents();
         kello = new Timer(100, kuuntelija);
         menu();
-
     }
 
     private void menu() {
@@ -145,7 +140,7 @@ public class MatopeliGUI extends javax.swing.JFrame {
             public void actionPerformed(ActionEvent e) {
                 kello.setDelay(50);
                 kuuntelija.asetaNopeus(50);
-                kuuntelija.asetaKentta();
+                kuuntelija.reset();
                 jPopupMenu2.setVisible(false);
                 repaint();
             }
@@ -159,7 +154,7 @@ public class MatopeliGUI extends javax.swing.JFrame {
             public void actionPerformed(ActionEvent e) {
                 kello.setDelay(100);
                 kuuntelija.asetaNopeus(100);
-                kuuntelija.asetaKentta();
+                kuuntelija.reset();
                 jPopupMenu2.setVisible(false);
                 repaint();
             }
@@ -173,7 +168,7 @@ public class MatopeliGUI extends javax.swing.JFrame {
             public void actionPerformed(ActionEvent e) {
                 kello.setDelay(150);
                 kuuntelija.asetaNopeus(150);
-                kuuntelija.asetaKentta();
+                kuuntelija.reset();
                 jPopupMenu2.setVisible(false);
                 repaint();
             }
@@ -186,7 +181,7 @@ public class MatopeliGUI extends javax.swing.JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 kuuntelija.asetaKasvavaNopeus();
-                kuuntelija.asetaKentta();
+                kuuntelija.reset();
                 jPopupMenu2.setVisible(false);
                 repaint();
             }
@@ -364,7 +359,6 @@ public class MatopeliGUI extends javax.swing.JFrame {
                 new MatopeliGUI().setVisible(true);
             }
         });
-
     }
 
     @Override

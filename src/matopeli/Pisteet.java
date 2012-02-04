@@ -36,12 +36,10 @@ public class Pisteet {
     /**
      * nollaa pelin lopussa piste laskurin
      */
-    
     public void nollaa(){
         if (this.pisteet>pisteetMax){
             pisteetMax = pisteet;
         }
         this.pisteet = 0;
-    }
-    
+    }   
 }

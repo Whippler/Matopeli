@@ -32,8 +32,6 @@ public class Mato {
         Y.add(2, 2);
         X.add(2, 2);
         suunta = "oikealle";
-
-
     }
 
     /**
@@ -48,7 +46,6 @@ public class Mato {
            this.suunta.equals("alas") && suunta.equals("ylös")){
            return;
         }
-        
         this.suunta = suunta;
     }
 

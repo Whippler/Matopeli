@@ -59,7 +59,6 @@ public class Kentta {
                     Y.add(j);
                 }
             }
-            
         }
         int index = arpa.nextInt(X.size());
         this.setArvo(X.get(index), Y.get(index), 2);
