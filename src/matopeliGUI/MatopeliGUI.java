@@ -22,23 +22,58 @@ public class MatopeliGUI extends javax.swing.JFrame {
     private class Kuuntelija implements ActionListener {
 
         private String kentta;
+        private int nopeus;
+        private int pelimuoto;
+        private int delay;
 
         public Kuuntelija() {
             kentta = "classic";
+            nopeus = 100;
+            pelimuoto = 0;
+            delay = 0;
         }
 
         public void asetaKentta(String nimi) {
             this.kentta = nimi;
         }
 
+        public void asetaNopeus(int nopeus) {
+            kello.setDelay(nopeus);
+            pelimuoto = 0;
+        }
+
+        public void asetaKasvavaNopeus() {
+            nopeus = 200;
+            kello.setDelay(nopeus);
+            pelimuoto = 1;
+            delay = 0;
+        }
+
         @Override
         public void actionPerformed(ActionEvent ae) {
+
             if (peli.etene() == true) {
                 repaint();
+
+                if (pelimuoto == 1) {
+                    delay = delay + 1;
+                    if (delay == 5 && nopeus > 20) {
+                        nopeus = nopeus - 1;
+                        kello.setDelay(nopeus);
+                        delay = 0;
+                    }
+                    kello.setDelay(nopeus);
+                }
+
             } else {
                 kello.stop();
                 showScore();
                 peli.reset(kentta);
+
+                if (pelimuoto == 1) {
+                    this.asetaKasvavaNopeus();
+                }
+
                 repaint();
 
             }
@@ -70,6 +105,19 @@ public class MatopeliGUI extends javax.swing.JFrame {
         };
         classic.addActionListener(classicListener);
 
+        JMenuItem nowalls = new JMenuItem("no walls");
+        ActionListener nowallsListener = new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                peli.reset("nowalls");
+                kuuntelija.asetaKentta("nowalls");
+                repaint();
+                jPopupMenu1.setVisible(false);
+            }
+        };
+        nowalls.addActionListener(nowallsListener);
+
 
         JMenuItem cross = new JMenuItem("cross");
         ActionListener crossListener = new ActionListener() {
@@ -85,6 +133,7 @@ public class MatopeliGUI extends javax.swing.JFrame {
         cross.addActionListener(crossListener);
 
         jPopupMenu1.add(classic);
+        jPopupMenu1.add(nowalls);
         jPopupMenu1.add(cross);
 
         JMenuItem fast = new JMenuItem("fast");
@@ -93,6 +142,7 @@ public class MatopeliGUI extends javax.swing.JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 kello.setDelay(50);
+                kuuntelija.asetaNopeus(50);
                 jPopupMenu2.setVisible(false);
                 repaint();
             }
@@ -105,6 +155,7 @@ public class MatopeliGUI extends javax.swing.JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 kello.setDelay(100);
+                kuuntelija.asetaNopeus(100);
                 jPopupMenu2.setVisible(false);
                 repaint();
             }
@@ -117,15 +168,30 @@ public class MatopeliGUI extends javax.swing.JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 kello.setDelay(150);
+                kuuntelija.asetaNopeus(150);
                 jPopupMenu2.setVisible(false);
                 repaint();
             }
         };
         slow.addActionListener(slowListener);
 
+        JMenuItem increasing = new JMenuItem("increasing");
+        ActionListener increasingListener = new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                kuuntelija.asetaKasvavaNopeus();
+                jPopupMenu2.setVisible(false);
+                repaint();
+            }
+        };
+        increasing.addActionListener(increasingListener);
+
         jPopupMenu2.add(fast);
         jPopupMenu2.add(normal);
         jPopupMenu2.add(slow);
+        jPopupMenu2.addSeparator();
+        jPopupMenu2.add(increasing);
     }
 
     /**
@@ -144,6 +210,14 @@ public class MatopeliGUI extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
+
+        jPopupMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
+
+            //    public void mouseExited(java.awt.event.MouseEvent evt) {
+                //        jPopupMenu1MouseExited(evt);
+                //    }
+
+        });
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Matopeli");
@@ -172,9 +246,6 @@ public class MatopeliGUI extends javax.swing.JFrame {
         jMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jMenu1MouseClicked(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                none(evt);
             }
         });
         jMenuBar1.add(jMenu1);
@@ -241,10 +312,11 @@ public class MatopeliGUI extends javax.swing.JFrame {
         jPopupMenu2.show(evt.getComponent(), 0, 21);
     }//GEN-LAST:event_jMenu2MouseClicked
 
-    private void none(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_none
-        // TODO add your handling code here:
-    }//GEN-LAST:event_none
-
+//    private void jPopupMenu1MouseExited(java.awt.event.MouseEvent evt) {
+//        // TODO add your handling code here:
+//        jPopupMenu1.setVisible(false);
+//        repaint();
+//    }
     /**
      * @param args the command line arguments
      */
