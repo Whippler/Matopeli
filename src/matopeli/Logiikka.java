@@ -18,7 +18,6 @@ public class Logiikka {
     }
 
     public void reset(String nimi) {
-
         kentta.alustaKentta(nimi);
         mato.alustaMato(kentta.getKorkeus(), kentta.getLeveys());
         pisteet.nollaa();
@@ -26,6 +25,7 @@ public class Logiikka {
 
     // LUOKAN MATO HALLINTA
     //--------------------------------------------------------------------------
+    
     /**
      * Tällä metodilla valitaan madolle etenemissuunta
      *
