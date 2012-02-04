@@ -1,31 +1,31 @@
-package matopeli;
 
-// import java.util.HashMap;
+import org.junit.After;
+import org.junit.AfterClass;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Test;
+import static org.junit.Assert.*;
+import matopeli.KenttaGeneraattori;
 
 /**
  *
- * @author lammenoj
+ * @author Kalle
  */
-public class KenttaGeneraattori {
-
-//    private HashMap<String, int[][]> kentat = new HashMap<String, int[][]>();
-//    private HashMap<String, int[][]> kentatCopy = new HashMap<String, int[][]>();
-
-    public KenttaGeneraattori() {
-//        kentat.put("classic", classic());
-//        kentat.put("cross", cross());
+public class KenttaGeneraattoriTest {
+    
+    KenttaGeneraattori gen = new KenttaGeneraattori();
+    
+    public KenttaGeneraattoriTest() {
     }
 
-    public int[][] getKentta(String nimi) {
-//        kentatCopy.putAll(kentat);
-        if (nimi.equals("classic"))
-            return classic();
-        else
-            return cross();
+    @Before
+    public void setUp() {
     }
 
-    private int[][] classic() {
-        int[][] classic = {{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+    @Test
+    public void kentanSaantiClassic(){
+        int [][] classic = 
+            {{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
             {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
             {1, 0, 3, 3, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
             {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
@@ -47,10 +47,11 @@ public class KenttaGeneraattori {
             {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
             {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
             {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}};
-        return classic;
+        
+        assertEquals(classic, gen.getKentta("classic"));
     }
-
-    private int[][] cross() {
+    @Test
+    public void kentanSaantiCross(){
         int[][] cross = {{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
             {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
             {0, 0, 3, 3, 3, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
@@ -73,6 +74,8 @@ public class KenttaGeneraattori {
             {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
             {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
             {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}};
-        return cross;
+        
+        assertEquals(cross, gen.getKentta("cross"));
+        
     }
 }

@@ -2,7 +2,6 @@
 package matopeli;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Random;
 /**
  * Luokka toteuttaa kentän jossa mato liikkuu
@@ -23,15 +22,11 @@ public class Kentta {
      * @param y asetettavan arvon y koordinaatti
      * @param value kentälle asetettava arvo
      */
-    
     public Kentta(){
-
     }
     
     public void alustaKentta(String nimi){
         this.kentta = kenttaGen.getKentta(nimi);
-        
-
         this.setOmena();    
     }
     
