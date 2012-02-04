@@ -41,7 +41,7 @@ public class Mato {
      *
      * @param suunta merkkijono joka kuvaa suuntaa
      */
-    public void suunta(String suunta) {
+    public void setSuunta(String suunta) {
         if(this.suunta.equals("oikealle") && suunta.equals("vasemmalle") ||
            this.suunta.equals("vasemmalle") && suunta.equals("oikealle") ||
            this.suunta.equals("ylös") && suunta.equals("alas") ||

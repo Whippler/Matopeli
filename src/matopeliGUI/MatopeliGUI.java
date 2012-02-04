@@ -8,6 +8,7 @@ import java.awt.Graphics;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.Timer;
 import matopeli.*;
@@ -16,14 +17,20 @@ public class MatopeliGUI extends javax.swing.JFrame {
 
     Logiikka peli = new Logiikka();
     Timer kello;
+    Kuuntelija kuuntelija = new Kuuntelija();
 
     private class Kuuntelija implements ActionListener {
 
+        private String kentta;
+
         public Kuuntelija() {
+            kentta = "classic";
         }
 
-        private int testi = 0;
-        
+        public void asetaKentta(String nimi) {
+            this.kentta = nimi;
+        }
+
         @Override
         public void actionPerformed(ActionEvent ae) {
             if (peli.etene() == true) {
@@ -31,15 +38,7 @@ public class MatopeliGUI extends javax.swing.JFrame {
             } else {
                 kello.stop();
                 showScore();
-                if (testi == 0){
-                    peli.reset("cross");
-                    testi = 1;
-                } else {
-                    peli.reset("classic");
-                    testi = 0;
-                }
-                
-    
+                peli.reset(kentta);
                 repaint();
 
             }
@@ -50,8 +49,83 @@ public class MatopeliGUI extends javax.swing.JFrame {
      * Creates new form matopeliGUI2
      */
     public MatopeliGUI() {
+
         initComponents();
-        kello = new Timer(100, new Kuuntelija());
+        kello = new Timer(100, kuuntelija);
+        menu();
+
+    }
+
+    private void menu() {
+        JMenuItem classic = new JMenuItem("classic");
+        ActionListener classicListener = new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                peli.reset("classic");
+                kuuntelija.asetaKentta("classic");
+                repaint();
+                jPopupMenu1.setVisible(false);
+            }
+        };
+        classic.addActionListener(classicListener);
+
+
+        JMenuItem cross = new JMenuItem("cross");
+        ActionListener crossListener = new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                peli.reset("cross");
+                kuuntelija.asetaKentta("cross");
+                repaint();
+                jPopupMenu1.setVisible(false);
+            }
+        };
+        cross.addActionListener(crossListener);
+
+        jPopupMenu1.add(classic);
+        jPopupMenu1.add(cross);
+
+        JMenuItem fast = new JMenuItem("fast");
+        ActionListener fastListener = new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                kello.setDelay(50);
+                jPopupMenu2.setVisible(false);
+                repaint();
+            }
+        };
+        fast.addActionListener(fastListener);
+
+        JMenuItem normal = new JMenuItem("normal");
+        ActionListener normalListener = new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                kello.setDelay(100);
+                jPopupMenu2.setVisible(false);
+                repaint();
+            }
+        };
+        normal.addActionListener(normalListener);
+
+        JMenuItem slow = new JMenuItem("slow");
+        ActionListener slowListener = new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                kello.setDelay(150);
+                jPopupMenu2.setVisible(false);
+                repaint();
+            }
+        };
+        slow.addActionListener(slowListener);
+
+        jPopupMenu2.add(fast);
+        jPopupMenu2.add(normal);
+        jPopupMenu2.add(slow);
     }
 
     /**
@@ -64,40 +138,67 @@ public class MatopeliGUI extends javax.swing.JFrame {
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
+        jPopupMenu2 = new javax.swing.JPopupMenu();
         scoreLabel = new javax.swing.JLabel();
         TopScoreLabel = new javax.swing.JLabel();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Matopeli");
-        setBackground(new java.awt.Color(204, 204, 204));
-        setPreferredSize(new java.awt.Dimension(280, 300));
+        setBackground(new java.awt.Color(255, 255, 255));
+        setPreferredSize(new java.awt.Dimension(280, 328));
         addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 formKeyPressed(evt);
             }
         });
 
+        scoreLabel.setBackground(new java.awt.Color(255, 255, 255));
         scoreLabel.setLabelFor(this);
         scoreLabel.setText("Score");
         scoreLabel.setMaximumSize(new java.awt.Dimension(37, 20));
         scoreLabel.setMinimumSize(new java.awt.Dimension(37, 20));
         scoreLabel.setPreferredSize(new java.awt.Dimension(37, 20));
 
+        TopScoreLabel.setBackground(new java.awt.Color(255, 255, 255));
         TopScoreLabel.setText("TopScore");
         TopScoreLabel.setMaximumSize(new java.awt.Dimension(60, 20));
         TopScoreLabel.setMinimumSize(new java.awt.Dimension(60, 20));
         TopScoreLabel.setPreferredSize(new java.awt.Dimension(60, 20));
+
+        jMenu1.setText("kenttä");
+        jMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu1MouseClicked(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                none(evt);
+            }
+        });
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("nopeus");
+        jMenu2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu2MouseClicked(evt);
+            }
+        });
+        jMenuBar1.add(jMenu2);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(36, Short.MAX_VALUE)
-                .addComponent(scoreLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(TopScoreLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(21, 21, 21))
+                .addGap(26, 26, 26)
+                .addComponent(scoreLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(TopScoreLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 28, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -105,7 +206,7 @@ public class MatopeliGUI extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(scoreLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(TopScoreLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 221, Short.MAX_VALUE))
+                .addGap(0, 200, Short.MAX_VALUE))
         );
 
         pack();
@@ -129,6 +230,20 @@ public class MatopeliGUI extends javax.swing.JFrame {
             kello.start();
         }
     }//GEN-LAST:event_formKeyPressed
+
+    private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
+        // TODO add your handling code here:
+        jPopupMenu1.show(evt.getComponent(), 0, 21);
+    }//GEN-LAST:event_jMenu1MouseClicked
+
+    private void jMenu2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu2MouseClicked
+        // TODO add your handling code here:
+        jPopupMenu2.show(evt.getComponent(), 0, 21);
+    }//GEN-LAST:event_jMenu2MouseClicked
+
+    private void none(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_none
+        // TODO add your handling code here:
+    }//GEN-LAST:event_none
 
     /**
      * @param args the command line arguments
@@ -176,12 +291,12 @@ public class MatopeliGUI extends javax.swing.JFrame {
 
     @Override
     public void paint(Graphics g) {
-        
-        //super.paint(g);
-        
+
+        super.paint(g);
+
         scoreLabel.setText("Score: " + peli.pisteet());
         TopScoreLabel.setText("Top Score: " + peli.pisteetMax());
-        
+
         int[][] alue = peli.getKentta();
 
         for (int i = 0; i < alue.length; i++) {
@@ -195,7 +310,7 @@ public class MatopeliGUI extends javax.swing.JFrame {
                 } else {
                     g.setColor(Color.pink);
                 }
-                g.fillRect(j * 10 + 30, i * 10 + 50, 9, 9);
+                g.fillRect(j * 10 + 30, i * 10 + 80, 9, 9);
             }
         }
     }
@@ -205,7 +320,11 @@ public class MatopeliGUI extends javax.swing.JFrame {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel TopScoreLabel;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPopupMenu jPopupMenu1;
+    private javax.swing.JPopupMenu jPopupMenu2;
     private javax.swing.JLabel scoreLabel;
     // End of variables declaration//GEN-END:variables
 }

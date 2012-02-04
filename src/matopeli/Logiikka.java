@@ -33,7 +33,7 @@ public class Logiikka {
      * menossa
      */
     public void asetaSuunta(String suunta) {
-        mato.suunta(suunta);
+        mato.setSuunta(suunta);
     }
 
     /**
