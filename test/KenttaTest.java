@@ -25,8 +25,6 @@ public class KenttaTest {
 
     @Test
     public void arvonHaku(){
-
-        assertEquals(0, kentta.getArvo(5, 5));
         assertEquals(1, kentta.getArvo(0, 0));
     }
     @Test

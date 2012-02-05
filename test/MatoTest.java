@@ -140,11 +140,6 @@ public class MatoTest {
     }
 
     @Test
-    public void pituus() {
-        assertEquals(3, ossi.getPituus());
-    }
-
-    @Test
     public void viimeisenPoisto() {
         LinkedList x1 = ossi.getX();
         LinkedList y1 = ossi.getY();
