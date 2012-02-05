@@ -4,15 +4,14 @@ package matopeliGUI;
  *
  * @author lammenoj
  */
-import java.awt.Graphics;
 import java.awt.Color;
+import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.Timer;
-import matopeli.*;
+import matopeli.Logiikka;
 
 public class MatopeliGUI extends javax.swing.JFrame {
 
@@ -366,9 +365,8 @@ public class MatopeliGUI extends javax.swing.JFrame {
 
     @Override
     public void paint(Graphics g) {
-
         super.paint(g);
-
+        
         scoreLabel.setText("Score: " + peli.pisteet());
         TopScoreLabel.setText("Top Score: " + peli.pisteetMax());
 
@@ -391,7 +389,7 @@ public class MatopeliGUI extends javax.swing.JFrame {
     }
 
     public void showScore() {
-        JOptionPane.showMessageDialog(this, "lol");
+        JOptionPane.showMessageDialog(this, "Game Over!!");
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel TopScoreLabel;
