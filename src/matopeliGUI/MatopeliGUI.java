@@ -63,7 +63,6 @@ public class MatopeliGUI extends javax.swing.JFrame {
                     delay = delay + 1;
                     if (delay == 5 && nopeus > 20) {
                         nopeus = nopeus - 1;
-                        kello.setDelay(nopeus);
                         delay = 0;
                     }
                     kello.setDelay(nopeus);
@@ -117,6 +116,11 @@ public class MatopeliGUI extends javax.swing.JFrame {
         setTitle("Matopeli");
         setBackground(new java.awt.Color(255, 255, 255));
         setPreferredSize(new java.awt.Dimension(280, 328));
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                formMouseClicked(evt);
+            }
+        });
         addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 formKeyPressed(evt);
@@ -220,7 +224,7 @@ public class MatopeliGUI extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(scoreLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(TopScoreLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 200, Short.MAX_VALUE))
+                .addContainerGap(200, Short.MAX_VALUE))
         );
 
         pack();
@@ -293,6 +297,11 @@ public class MatopeliGUI extends javax.swing.JFrame {
         kuuntelija.reset();
         repaint();
     }//GEN-LAST:event_jMenuItem7ActionPerformed
+
+    private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
+        // TODO add your handling code here:
+        repaint();
+    }//GEN-LAST:event_formMouseClicked
 
     /**
      * @param args the command line arguments
