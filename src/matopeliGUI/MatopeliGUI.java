@@ -8,6 +8,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
 import javax.swing.JOptionPane;
 import javax.swing.Timer;
 import matopeli.Logiikka;
@@ -17,6 +18,7 @@ public class MatopeliGUI extends javax.swing.JFrame {
     Logiikka peli = new Logiikka();
     Timer kello;
     Kuuntelija kuuntelija = new Kuuntelija();
+    BufferedImage bf = new BufferedImage(280, 330, BufferedImage.TYPE_INT_RGB);
 
     private class Kuuntelija implements ActionListener {
 
@@ -114,7 +116,7 @@ public class MatopeliGUI extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Matopeli");
         setBackground(new java.awt.Color(255, 255, 255));
-        setPreferredSize(new java.awt.Dimension(280, 328));
+        setPreferredSize(new java.awt.Dimension(280, 330));
         addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 formMouseClicked(evt);
@@ -345,10 +347,9 @@ public class MatopeliGUI extends javax.swing.JFrame {
         });
     }
 
-    @Override
-    public void paint(Graphics g) {
+    public void animation(Graphics g) {
         super.paint(g);
-        
+
         scoreLabel.setText("Score: " + peli.pisteet());
         TopScoreLabel.setText("Top Score: " + peli.pisteetMax());
 
@@ -368,6 +369,17 @@ public class MatopeliGUI extends javax.swing.JFrame {
                 g.fillRect(j * 10 + 30, i * 10 + 80, 9, 9);
             }
         }
+    }
+
+    @Override
+    public void paint(Graphics g) {
+        animation(bf.getGraphics()); //bf is the BufferedImage object
+        g.drawImage(bf, 0, 0, null);
+    }
+
+    @Override
+    public void update(Graphics g) {
+        paint(g);
     }
 
     public void showScore() {
