@@ -22,8 +22,10 @@ public class KenttaGeneraattori {
             return classic();
         else if (nimi.equals("cross"))
             return cross();
-        else
+        else if (nimi.equals("nowalls"))
             return nowalls();
+        
+        return null;
     }
 
     private int[][] classic() {

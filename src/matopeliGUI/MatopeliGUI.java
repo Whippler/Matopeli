@@ -18,7 +18,7 @@ public class MatopeliGUI extends javax.swing.JFrame {
     Logiikka peli = new Logiikka();
     Timer kello;
     Kuuntelija kuuntelija = new Kuuntelija();
-    BufferedImage bf = new BufferedImage(280, 330, BufferedImage.TYPE_INT_RGB);
+    BufferedImage bf;
 
     private class Kuuntelija implements ActionListener {
 
@@ -88,6 +88,8 @@ public class MatopeliGUI extends javax.swing.JFrame {
 
         initComponents();
         kello = new Timer(100, kuuntelija);
+        this.setSize(280, 330);
+        bf = new BufferedImage(560, 630, BufferedImage.TYPE_INT_RGB);
     }
 
     /**
@@ -253,18 +255,21 @@ public class MatopeliGUI extends javax.swing.JFrame {
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         // TODO add your handling code here:
         kuuntelija.asetaKentta("classic");
+        this.setSize(280, 330);
         repaint();
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         // TODO add your handling code here:
         kuuntelija.asetaKentta("nowalls");
+        this.setSize(280, 330);
         repaint();
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         // TODO add your handling code here:
         kuuntelija.asetaKentta("cross");
+        this.setSize(280, 330);
         repaint();
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
