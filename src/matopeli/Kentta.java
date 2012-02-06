@@ -26,6 +26,7 @@ public class Kentta {
     }
     
     public void alustaKentta(String nimi){
+        kentta = null;
         this.kentta = kenttaGen.getKentta(nimi);
         this.setOmena();    
     }
