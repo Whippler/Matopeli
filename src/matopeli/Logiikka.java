@@ -59,21 +59,10 @@ public class Logiikka {
         if (ruutu == 1 || ruutu == 3) {
             arvo = false;
         }
-
-        // asettaa madon kentälle
-        for (int i = 0; i < mato.getPituus() - 1; i++) {
-            kentta.setArvo(X.get(i), Y.get(i), 3);
-        }
-
+        
+        kentta.setArvo(X.getFirst(), Y.getFirst(), 3);
         return arvo;
     }
-
-//    public LinkedList getMatoX() {
-//        return mato.getX();
-//    }
-//    public LinkedList getMatoY() {
-//        return mato.getY();
-//    }
     
     //LUOKAN KENTTA HALLINTA
     //--------------------------------------------------------------------------

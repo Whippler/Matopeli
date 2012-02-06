@@ -120,15 +120,7 @@ public class Mato {
     public LinkedList getY() {
         return Y;
     }
-
-    /**
-     *
-     * @return Palauttaa madon pituuden
-     */
-    public int getPituus() {
-        return X.size();
-    }
-
+    
     public String getSuunta() {
         return suunta;
     }
