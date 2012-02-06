@@ -120,6 +120,7 @@ public class MatopeliGUI extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Matopeli");
         setBackground(new java.awt.Color(255, 255, 255));
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setPreferredSize(new java.awt.Dimension(280, 330));
         setResizable(false);
         addMouseListener(new java.awt.event.MouseAdapter() {
