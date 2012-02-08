@@ -14,6 +14,7 @@ public class Kentta {
     // 3 = mato
     
     private int[][] kentta;
+    private String nimi;
     private KenttaGeneraattori kenttaGen = new KenttaGeneraattori();
 
     /**
@@ -28,6 +29,7 @@ public class Kentta {
     public void alustaKentta(String nimi){
         kentta = null;
         this.kentta = kenttaGen.getKentta(nimi);
+        this.nimi = nimi;
         this.setOmena();    
     }
     
@@ -76,5 +78,9 @@ public class Kentta {
     
     public int[][] getKentta(){
         return kentta;
-    }   
+    }
+    
+    public String getNimi(){
+        return nimi;
+    }
 }

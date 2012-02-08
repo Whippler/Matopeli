@@ -14,6 +14,7 @@ public class Mato {
     private String suunta;
     private int maxY;
     private int maxX;
+    private int nopeus;
 
     public Mato() {
     }
@@ -124,4 +125,13 @@ public class Mato {
     public String getSuunta() {
         return suunta;
     }
+    
+    public int getNopeus(){
+        return nopeus;
+    }
+
+    public void setNopeus(int nopeus) {
+        this.nopeus = nopeus;
+    }
+    
 }

@@ -20,7 +20,6 @@ public class Logiikka {
     public void reset(String nimi) {
         kentta.alustaKentta(nimi);
         mato.alustaMato(kentta.getKorkeus(), kentta.getLeveys());
-        pisteet.nollaa();
     }
 
     // LUOKAN MATO HALLINTA
@@ -63,6 +62,12 @@ public class Logiikka {
         kentta.setArvo(X.getFirst(), Y.getFirst(), 3);
         return arvo;
     }
+        public int getNopeus(){
+            return mato.getNopeus();
+        }
+        public void setNopeus(int nopeus){
+            mato.setNopeus(nopeus);
+        }
     
     //LUOKAN KENTTA HALLINTA
     //--------------------------------------------------------------------------
@@ -75,8 +80,12 @@ public class Logiikka {
     public int pisteet() {
         return pisteet.getPisteet();
     }
-
-    public int pisteetMax() {
-        return pisteet.getPisteetMax();
+    
+    public void setScore(String nimi){
+        pisteet.pisteet(nimi, kentta.getNimi(), mato.getNopeus());
     }
+
+//    public int pisteetMax() {
+//        return pisteet.getPisteetMax();
+//    }
 }

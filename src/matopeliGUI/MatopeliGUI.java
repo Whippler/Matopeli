@@ -23,13 +23,12 @@ public class MatopeliGUI extends javax.swing.JFrame {
     private class Kuuntelija implements ActionListener {
 
         private String kentta;
-        private int nopeus;
         private int pelimuoto;
         private int delay;
 
         public Kuuntelija() {
             kentta = "classic";
-            nopeus = 100;
+            peli.setNopeus(100);
             pelimuoto = 0;
             delay = 0;
         }
@@ -43,14 +42,14 @@ public class MatopeliGUI extends javax.swing.JFrame {
             peli.reset(kentta);
         }
 
-        public void asetaNopeus(int nopeus) {
-            kello.setDelay(nopeus);
+        public void asetaNopeus() {
+            kello.setDelay(peli.getNopeus());
             pelimuoto = 0;
         }
 
         public void asetaKasvavaNopeus() {
-            nopeus = 200;
-            kello.setDelay(nopeus);
+            peli.setNopeus(200);
+            kello.setDelay(peli.getNopeus());
             pelimuoto = 1;
             delay = 0;
         }
@@ -62,11 +61,11 @@ public class MatopeliGUI extends javax.swing.JFrame {
                 repaint();
                 if (pelimuoto == 1) {
                     delay = delay + 1;
-                    if (delay == 5 && nopeus > 20) {
-                        nopeus = nopeus - 1;
+                    if (delay == 5 && peli.getNopeus()> 20) {
+                        peli.setNopeus(peli.getNopeus()-1);
                         delay = 0;
                     }
-                    kello.setDelay(nopeus);
+                    kello.setDelay(peli.getNopeus());
                 }
             } else {
                 kello.stop();
@@ -87,7 +86,7 @@ public class MatopeliGUI extends javax.swing.JFrame {
     public MatopeliGUI() {
 
         initComponents();
-        this.setLocationRelativeTo(null);
+        this.setLocationRelativeTo(null); //asettaa ikkunan keskellä näyttöä
         kello = new Timer(100, kuuntelija);
         this.setSize(280, 330);
         bf = new BufferedImage(560, 630, BufferedImage.TYPE_INT_RGB);
@@ -102,6 +101,9 @@ public class MatopeliGUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jMenuBar2 = new javax.swing.JMenuBar();
+        jMenu4 = new javax.swing.JMenu();
+        jMenu5 = new javax.swing.JMenu();
         scoreLabel = new javax.swing.JLabel();
         TopScoreLabel = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -119,17 +121,17 @@ public class MatopeliGUI extends javax.swing.JFrame {
         jMenu3 = new javax.swing.JMenu();
         jMenuItem9 = new javax.swing.JMenuItem();
 
+        jMenu4.setText("File");
+        jMenuBar2.add(jMenu4);
+
+        jMenu5.setText("Edit");
+        jMenuBar2.add(jMenu5);
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Matopeli");
         setBackground(new java.awt.Color(255, 255, 255));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        setPreferredSize(new java.awt.Dimension(280, 330));
         setResizable(false);
-        addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                formMouseClicked(evt);
-            }
-        });
         addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 formKeyPressed(evt);
@@ -150,6 +152,16 @@ public class MatopeliGUI extends javax.swing.JFrame {
         TopScoreLabel.setPreferredSize(new java.awt.Dimension(60, 20));
 
         jMenu1.setText("level");
+        jMenu1.addMenuListener(new javax.swing.event.MenuListener() {
+            public void menuCanceled(javax.swing.event.MenuEvent evt) {
+            }
+            public void menuDeselected(javax.swing.event.MenuEvent evt) {
+                jMenu1MenuDeselected(evt);
+            }
+            public void menuSelected(javax.swing.event.MenuEvent evt) {
+                jMenu1MenuSelected(evt);
+            }
+        });
 
         jMenuItem1.setText("classic");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
@@ -186,6 +198,16 @@ public class MatopeliGUI extends javax.swing.JFrame {
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("speed");
+        jMenu2.addMenuListener(new javax.swing.event.MenuListener() {
+            public void menuCanceled(javax.swing.event.MenuEvent evt) {
+            }
+            public void menuDeselected(javax.swing.event.MenuEvent evt) {
+                jMenu2MenuDeselected(evt);
+            }
+            public void menuSelected(javax.swing.event.MenuEvent evt) {
+                jMenu2MenuSelected(evt);
+            }
+        });
 
         jMenuItem4.setText("fast");
         jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
@@ -223,6 +245,16 @@ public class MatopeliGUI extends javax.swing.JFrame {
         jMenuBar1.add(jMenu2);
 
         jMenu3.setText("help");
+        jMenu3.addMenuListener(new javax.swing.event.MenuListener() {
+            public void menuCanceled(javax.swing.event.MenuEvent evt) {
+            }
+            public void menuDeselected(javax.swing.event.MenuEvent evt) {
+                jMenu3MenuDeselected(evt);
+            }
+            public void menuSelected(javax.swing.event.MenuEvent evt) {
+                jMenu3MenuSelected(evt);
+            }
+        });
 
         jMenuItem9.setText("abaut");
         jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
@@ -262,7 +294,7 @@ public class MatopeliGUI extends javax.swing.JFrame {
     private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
         // TODO add your handling code here:
         int nappain = evt.getKeyCode();
-        //System.out.println(nappain);
+        System.out.println(nappain);
 
         if (nappain == 38 && kello.isRunning() == true) {  // ylänuoli
             peli.asetaSuunta("ylös");
@@ -307,7 +339,7 @@ public class MatopeliGUI extends javax.swing.JFrame {
         // TODO add your handling code here:
         kello.stop();
         kello.setDelay(50);
-        kuuntelija.asetaNopeus(50);
+        peli.setNopeus(50);
         kuuntelija.reset();
         repaint();
     }//GEN-LAST:event_jMenuItem4ActionPerformed
@@ -316,7 +348,7 @@ public class MatopeliGUI extends javax.swing.JFrame {
         // TODO add your handling code here:
         kello.stop();
         kello.setDelay(100);
-        kuuntelija.asetaNopeus(100);
+        peli.setNopeus(100);
         kuuntelija.reset();
         repaint();
     }//GEN-LAST:event_jMenuItem5ActionPerformed
@@ -324,7 +356,7 @@ public class MatopeliGUI extends javax.swing.JFrame {
     private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
         // TODO add your handling code here:
         kello.setDelay(150);
-        kuuntelija.asetaNopeus(150);
+        peli.setNopeus(150);
         kuuntelija.reset();
         repaint();
     }//GEN-LAST:event_jMenuItem6ActionPerformed
@@ -337,11 +369,6 @@ public class MatopeliGUI extends javax.swing.JFrame {
         repaint();
     }//GEN-LAST:event_jMenuItem7ActionPerformed
 
-    private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
-        // TODO add your handling code here:
-        repaint();
-    }//GEN-LAST:event_formMouseClicked
-
     private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
         // TODO add your handling code here:
         about();
@@ -353,6 +380,36 @@ public class MatopeliGUI extends javax.swing.JFrame {
         this.setSize(500, 550);
         repaint();
     }//GEN-LAST:event_jMenuItem8ActionPerformed
+
+    private void jMenu1MenuSelected(javax.swing.event.MenuEvent evt) {//GEN-FIRST:event_jMenu1MenuSelected
+        // TODO add your handling code here:
+        kello.stop();
+    }//GEN-LAST:event_jMenu1MenuSelected
+
+    private void jMenu2MenuSelected(javax.swing.event.MenuEvent evt) {//GEN-FIRST:event_jMenu2MenuSelected
+        // TODO add your handling code here:
+        kello.stop();
+    }//GEN-LAST:event_jMenu2MenuSelected
+
+    private void jMenu3MenuSelected(javax.swing.event.MenuEvent evt) {//GEN-FIRST:event_jMenu3MenuSelected
+        // TODO add your handling code here:
+        kello.stop();
+    }//GEN-LAST:event_jMenu3MenuSelected
+
+    private void jMenu1MenuDeselected(javax.swing.event.MenuEvent evt) {//GEN-FIRST:event_jMenu1MenuDeselected
+        // TODO add your handling code here:
+        repaint();
+    }//GEN-LAST:event_jMenu1MenuDeselected
+
+    private void jMenu2MenuDeselected(javax.swing.event.MenuEvent evt) {//GEN-FIRST:event_jMenu2MenuDeselected
+        // TODO add your handling code here:
+        repaint();
+    }//GEN-LAST:event_jMenu2MenuDeselected
+
+    private void jMenu3MenuDeselected(javax.swing.event.MenuEvent evt) {//GEN-FIRST:event_jMenu3MenuDeselected
+        // TODO add your handling code here:
+        repaint();
+    }//GEN-LAST:event_jMenu3MenuDeselected
 
     /**
      * @param args the command line arguments
@@ -401,7 +458,7 @@ public class MatopeliGUI extends javax.swing.JFrame {
         super.paint(g);
 
         scoreLabel.setText("Score: " + peli.pisteet());
-        TopScoreLabel.setText("Top Score: " + peli.pisteetMax());
+//        TopScoreLabel.setText("Top Score: " + peli.pisteetMax());
 
         int[][] alue = peli.getKentta();
 
@@ -434,8 +491,13 @@ public class MatopeliGUI extends javax.swing.JFrame {
 
     //Popup ikkunat
     //----------------------------------------------------------
+    
     public void showScore() {
-        JOptionPane.showMessageDialog(this, "Game Over!!");
+        String nimi = JOptionPane.showInputDialog("Game Over! \n You Scored: " + peli.pisteet() + "\n Pleace enter name for scoreboard");
+        if (nimi.equals(""))
+            peli.setScore("Anonymous");
+        else
+            peli.setScore(nimi);
     }
 
     public void about() {
@@ -447,7 +509,10 @@ public class MatopeliGUI extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu4;
+    private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;

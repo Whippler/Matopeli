@@ -9,8 +9,8 @@ import java.util.ArrayList;
 public class Pisteet {
     
     private int pisteet = 0;
-    private int pisteetMax =0;
-    
+    private ArrayList<Score>  kaikki = new ArrayList();
+   
     /**
      * Metodilla lisätään tulosta kun mato syö omenan
      */
@@ -25,21 +25,10 @@ public class Pisteet {
         return this.pisteet;
     }
     
-    /**
-     * 
-     * @return palauttaa suurimmat pisteet
-     */
-    public int getPisteetMax(){
-        return pisteetMax;
-    }
-    
-    /**
-     * nollaa pelin lopussa piste laskurin
-     */
-    public void nollaa(){
-        if (this.pisteet>pisteetMax){
-            pisteetMax = pisteet;
-        }
+    public void pisteet(String nimi, String kentta, int nopeus){
+        
+        Score uusi = new Score(nimi, kentta, nopeus, pisteet);
+        
         this.pisteet = 0;
-    }   
+    }
 }
