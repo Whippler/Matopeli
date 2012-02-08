@@ -29,6 +29,9 @@ public class Pisteet {
         
         Score uusi = new Score(nimi, kentta, nopeus, pisteet);
         
-        this.pisteet = 0;
+        nollaa();
+    }
+    public void nollaa(){
+        pisteet = 0;
     }
 }

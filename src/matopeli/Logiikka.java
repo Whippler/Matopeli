@@ -20,6 +20,7 @@ public class Logiikka {
     public void reset(String nimi) {
         kentta.alustaKentta(nimi);
         mato.alustaMato(kentta.getKorkeus(), kentta.getLeveys());
+        pisteet.nollaa();
     }
 
     // LUOKAN MATO HALLINTA
