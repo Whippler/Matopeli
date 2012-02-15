@@ -1,5 +1,6 @@
 package matopeli;
 
+import java.io.FileNotFoundException;
 import java.util.LinkedList;
 
 /**
@@ -57,9 +58,7 @@ public class Logiikka {
             pisteet.addPisteet();
         }
         if (ruutu == 1 || ruutu == 3) {
-//            arvo = false;
-            return false;
-                   
+            return false;    
         }
         
         kentta.setArvo(X.getFirst(), Y.getFirst(), 3);
@@ -78,7 +77,7 @@ public class Logiikka {
         return kentta.getKentta();
     }
 
-    //Luokan PISTEET HALLINTA
+    //Luokan TILASTOT HALLINTA
     //--------------------------------------------------------------------------
     public int pisteet() {
         return pisteet.getPisteet();
@@ -87,6 +86,7 @@ public class Logiikka {
     public void setScore(String nimi){
         pisteet.luoPisteet(nimi, kentta.getNimi(), mato.getNopeus());
     }
+    
 
 //    public int pisteetMax() {
 //        return pisteet.getPisteetMax();

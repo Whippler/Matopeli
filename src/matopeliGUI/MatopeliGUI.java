@@ -70,6 +70,7 @@ public class MatopeliGUI extends javax.swing.JFrame {
             } else {
                 kello.stop();
                 showScore();
+                
                 peli.reset(kentta);
 
                 if (pelimuoto == 1) {
