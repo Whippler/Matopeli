@@ -20,7 +20,11 @@ public class Tilastot {
      * Metodilla lisätään tulosta kun mato syö omenan
      */
     public Tilastot() {
-//        tiedosto.createNewFile();
+        try {
+            tiedosto.createNewFile();
+        } catch (IOException ex) {
+            Logger.getLogger(Tilastot.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     public void addPisteet() {
@@ -47,9 +51,8 @@ public class Tilastot {
 
     public void save() {
 
-        FileWriter tulos;
         try {
-            tulos = new FileWriter(tiedosto);
+            PrintWriter tulos = new PrintWriter(tiedosto);
             
             for (int i = 0; i < kaikki.size(); i++) {
 
@@ -57,8 +60,10 @@ public class Tilastot {
                 String kentta = kaikki.get(i).getKentta();
                 int pisteet = kaikki.get(i).getScore();
 
-                tulos.write(nimi + "|" + kentta + "|" + pisteet);
+                tulos.append(kaikki.get(i).getNimi() + "|" + kaikki.get(i).getKentta() + "|" + kaikki.get(i).getScore());
+                tulos.close();
             }
+            tulos.close();
             
         } catch (IOException ex) {
             Logger.getLogger(Tilastot.class.getName()).log(Level.SEVERE, null, ex);

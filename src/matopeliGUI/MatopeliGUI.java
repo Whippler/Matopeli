@@ -61,8 +61,8 @@ public class MatopeliGUI extends javax.swing.JFrame {
                 repaint();
                 if (pelimuoto == 1) {
                     delay = delay + 1;
-                    if (delay == 5 && peli.getNopeus()> 20) {
-                        peli.setNopeus(peli.getNopeus()-1);
+                    if (delay == 5 && peli.getNopeus() > 20) {
+                        peli.setNopeus(peli.getNopeus() - 1);
                         delay = 0;
                     }
                     kello.setDelay(peli.getNopeus());
@@ -70,7 +70,7 @@ public class MatopeliGUI extends javax.swing.JFrame {
             } else {
                 kello.stop();
                 showScore();
-                
+
                 peli.reset(kentta);
 
                 if (pelimuoto == 1) {
@@ -492,19 +492,18 @@ public class MatopeliGUI extends javax.swing.JFrame {
 
     //Popup ikkunat
     //----------------------------------------------------------
-    
     public void showScore() {
         String nimi = JOptionPane.showInputDialog("Game Over! \n You Scored: " + peli.pisteet() + "\n Pleace enter name for scoreboard");
-        if (nimi.equals(""))
+        if (nimi.equals("")) {
             peli.setScore("Anonymous");
-        else
+        } else {
             peli.setScore(nimi);
+        }
     }
 
     public void about() {
         JOptionPane.showMessageDialog(this, "not done yet");
     }
-    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel TopScoreLabel;
     private javax.swing.JMenu jMenu1;
