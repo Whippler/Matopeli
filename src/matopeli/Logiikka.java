@@ -87,6 +87,14 @@ public class Logiikka {
         pisteet.luoPisteet(nimi, kentta.getNimi(), mato.getNopeus());
     }
     
+    public void tallenna(){
+        pisteet.save();
+    }
+    
+    public void lataa(){
+        pisteet.load();
+    }
+    
 
 //    public int pisteetMax() {
 //        return pisteet.getPisteetMax();

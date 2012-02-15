@@ -1,0 +1,2 @@
+whippler|classic|1200
+ossi|classic|600

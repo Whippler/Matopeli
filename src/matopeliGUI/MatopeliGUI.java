@@ -70,7 +70,6 @@ public class MatopeliGUI extends javax.swing.JFrame {
             } else {
                 kello.stop();
                 showScore();
-
                 peli.reset(kentta);
 
                 if (pelimuoto == 1) {
@@ -91,6 +90,7 @@ public class MatopeliGUI extends javax.swing.JFrame {
         kello = new Timer(100, kuuntelija);
         this.setSize(280, 330);
         bf = new BufferedImage(560, 630, BufferedImage.TYPE_INT_RGB);
+//        peli.lataa();
     }
 
     /**
@@ -133,6 +133,11 @@ public class MatopeliGUI extends javax.swing.JFrame {
         setBackground(new java.awt.Color(255, 255, 255));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
         addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 formKeyPressed(evt);
@@ -295,7 +300,7 @@ public class MatopeliGUI extends javax.swing.JFrame {
     private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
         // TODO add your handling code here:
         int nappain = evt.getKeyCode();
-//        System.out.println(nappain);
+        System.out.println(nappain);
 
         if (nappain == 38 && kello.isRunning() == true) {  // ylänuoli
             peli.asetaSuunta("ylös");
@@ -411,6 +416,11 @@ public class MatopeliGUI extends javax.swing.JFrame {
         // TODO add your handling code here:
         repaint();
     }//GEN-LAST:event_jMenu3MenuDeselected
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        // TODO add your handling code here:
+        peli.tallenna();
+    }//GEN-LAST:event_formWindowClosed
 
     /**
      * @param args the command line arguments
