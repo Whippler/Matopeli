@@ -57,7 +57,9 @@ public class Logiikka {
             pisteet.addPisteet();
         }
         if (ruutu == 1 || ruutu == 3) {
-            arvo = false;
+//            arvo = false;
+            return false;
+                   
         }
         
         kentta.setArvo(X.getFirst(), Y.getFirst(), 3);

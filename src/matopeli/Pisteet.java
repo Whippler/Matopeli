@@ -27,8 +27,7 @@ public class Pisteet {
     
     public void pisteet(String nimi, String kentta, int nopeus){
         
-        Score uusi = new Score(nimi, kentta, nopeus, pisteet);
-        
+        Score uusi = new Score(nimi, kentta, pisteet);
         nollaa();
     }
     public void nollaa(){

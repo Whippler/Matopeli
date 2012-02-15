@@ -294,7 +294,7 @@ public class MatopeliGUI extends javax.swing.JFrame {
     private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
         // TODO add your handling code here:
         int nappain = evt.getKeyCode();
-        System.out.println(nappain);
+//        System.out.println(nappain);
 
         if (nappain == 38 && kello.isRunning() == true) {  // ylänuoli
             peli.asetaSuunta("ylös");

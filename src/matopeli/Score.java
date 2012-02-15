@@ -6,7 +6,7 @@ public class Score {
     private int score;
     private String nimi;
     
-    public Score(String nimi, String kentta, int nopeus, int score){
+    public Score(String nimi, String kentta, int score){
         this.nimi=nimi;
         this.score=score;        
     }
