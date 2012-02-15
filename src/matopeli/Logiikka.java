@@ -11,7 +11,7 @@ public class Logiikka {
 
     Kentta kentta = new Kentta();
     Mato mato = new Mato();
-    Pisteet pisteet = new Pisteet();
+    Tilastot pisteet = new Tilastot();
 
     public Logiikka() {
         this.reset("classic");
@@ -85,7 +85,7 @@ public class Logiikka {
     }
     
     public void setScore(String nimi){
-        pisteet.pisteet(nimi, kentta.getNimi(), mato.getNopeus());
+        pisteet.luoPisteet(nimi, kentta.getNimi(), mato.getNopeus());
     }
 
 //    public int pisteetMax() {
