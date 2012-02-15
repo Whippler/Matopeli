@@ -1,66 +1,70 @@
 package matopeli;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.PrintWriter;
+import java.io.*;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Luokka toteuttaa pisteiden hallinnan
+ *
  * @author lammenoj
  */
 public class Tilastot {
-    
+
     private int uudetPisteet = 0;
-    private ArrayList<Score>  kaikki = new ArrayList();
+    private ArrayList<Score> kaikki = new ArrayList();
     private File tiedosto = new File("matopeli_pisteet.txt");
-   
+
     /**
      * Metodilla lisätään tulosta kun mato syö omenan
      */
-    public Tilastot(){
+    public Tilastot() {
 //        tiedosto.createNewFile();
-        
     }
-    
-    public void addPisteet(){
+
+    public void addPisteet() {
         uudetPisteet = uudetPisteet + 100;
     }
+
     /**
-     * 
+     *
      * @return palauttaa käynnissä olevan pelin pisteet
      */
-    public int getPisteet(){
+    public int getPisteet() {
         return this.uudetPisteet;
     }
-    
-    public void luoPisteet(String nimi, String kentta, int nopeus){
+
+    public void luoPisteet(String nimi, String kentta, int nopeus) {
         Score uusi = new Score(nimi, kentta, uudetPisteet);
         kaikki.add(uusi);
     }
-    public void nollaa(){
+
+    public void nollaa() {
         uudetPisteet = 0;
         save();
     }
-    
+
     public void save() {
+
+        FileWriter tulos;
         try {
-        PrintWriter tulos = new PrintWriter(tiedosto);
-         
-        for (int i=0; i<kaikki.size(); i++){
+            tulos = new FileWriter(tiedosto);
             
-            String nimi = kaikki.get(i).getNimi();
-            String kentta = kaikki.get(i).getKentta();
-            int pisteet = kaikki.get(i).getScore();
+            for (int i = 0; i < kaikki.size(); i++) {
+
+                String nimi = kaikki.get(i).getNimi();
+                String kentta = kaikki.get(i).getKentta();
+                int pisteet = kaikki.get(i).getScore();
+
+                tulos.write(nimi + "|" + kentta + "|" + pisteet);
+            }
             
-            tulos.println(nimi + "|" + kentta + "|" + pisteet);
-        }
-        } catch (FileNotFoundException e){
-            
+        } catch (IOException ex) {
+            Logger.getLogger(Tilastot.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-    public void load(){
-        
+
+    public void load() {
     }
 }
