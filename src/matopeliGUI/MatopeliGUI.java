@@ -90,7 +90,6 @@ public class MatopeliGUI extends javax.swing.JFrame {
         kello = new Timer(100, kuuntelija);
         this.setSize(280, 330);
         bf = new BufferedImage(560, 630, BufferedImage.TYPE_INT_RGB);
-//        peli.lataa();
     }
 
     /**
@@ -133,11 +132,6 @@ public class MatopeliGUI extends javax.swing.JFrame {
         setBackground(new java.awt.Color(255, 255, 255));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setResizable(false);
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowClosed(java.awt.event.WindowEvent evt) {
-                formWindowClosed(evt);
-            }
-        });
         addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 formKeyPressed(evt);
@@ -161,11 +155,11 @@ public class MatopeliGUI extends javax.swing.JFrame {
         jMenu1.addMenuListener(new javax.swing.event.MenuListener() {
             public void menuCanceled(javax.swing.event.MenuEvent evt) {
             }
-            public void menuDeselected(javax.swing.event.MenuEvent evt) {
-                jMenu1MenuDeselected(evt);
-            }
             public void menuSelected(javax.swing.event.MenuEvent evt) {
                 jMenu1MenuSelected(evt);
+            }
+            public void menuDeselected(javax.swing.event.MenuEvent evt) {
+                jMenu1MenuDeselected(evt);
             }
         });
 
@@ -207,11 +201,11 @@ public class MatopeliGUI extends javax.swing.JFrame {
         jMenu2.addMenuListener(new javax.swing.event.MenuListener() {
             public void menuCanceled(javax.swing.event.MenuEvent evt) {
             }
-            public void menuDeselected(javax.swing.event.MenuEvent evt) {
-                jMenu2MenuDeselected(evt);
-            }
             public void menuSelected(javax.swing.event.MenuEvent evt) {
                 jMenu2MenuSelected(evt);
+            }
+            public void menuDeselected(javax.swing.event.MenuEvent evt) {
+                jMenu2MenuDeselected(evt);
             }
         });
 
@@ -254,11 +248,11 @@ public class MatopeliGUI extends javax.swing.JFrame {
         jMenu3.addMenuListener(new javax.swing.event.MenuListener() {
             public void menuCanceled(javax.swing.event.MenuEvent evt) {
             }
-            public void menuDeselected(javax.swing.event.MenuEvent evt) {
-                jMenu3MenuDeselected(evt);
-            }
             public void menuSelected(javax.swing.event.MenuEvent evt) {
                 jMenu3MenuSelected(evt);
+            }
+            public void menuDeselected(javax.swing.event.MenuEvent evt) {
+                jMenu3MenuDeselected(evt);
             }
         });
 
@@ -417,11 +411,6 @@ public class MatopeliGUI extends javax.swing.JFrame {
         repaint();
     }//GEN-LAST:event_jMenu3MenuDeselected
 
-    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
-        // TODO add your handling code here:
-        peli.tallenna();
-    }//GEN-LAST:event_formWindowClosed
-
     /**
      * @param args the command line arguments
      */
@@ -469,7 +458,7 @@ public class MatopeliGUI extends javax.swing.JFrame {
         super.paint(g);
 
         scoreLabel.setText("Score: " + peli.pisteet());
-//        TopScoreLabel.setText("Top Score: " + peli.pisteetMax());
+        TopScoreLabel.setText("Top Score: " + peli.pisteetMax());
 
         int[][] alue = peli.getKentta();
 

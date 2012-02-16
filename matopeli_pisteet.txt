@@ -1,2 +1,3 @@
-whippler|classic|1200
-ossi|classic|600
+classic|100|1000|Whippler
+classic|100|4700|Whippler
+nowalls|100|4700|Whippler

@@ -14,18 +14,16 @@ import java.util.logging.Logger;
 public class Tilastot {
 
     private int uudetPisteet = 0;
-    private ArrayList<Score> kaikki = new ArrayList();
-    private File tiedosto = new File("matopeli_pisteet.txt");
-    private static Scanner lukija = new Scanner(System.in);
+    private static ArrayList<Score> kaikki = new ArrayList();
+    private static File tiedosto = new File("matopeli_pisteet.txt");
+    private static Scanner lukija;
 
-    /**
-     * Metodilla lisätään tulosta kun mato syö omenan
-     */
     public Tilastot() {
+        load();
         try {
             tiedosto.createNewFile();
         } catch (IOException ex) {
-//            Logger.getLogger(Tilastot.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Tilastot.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -41,17 +39,30 @@ public class Tilastot {
         return this.uudetPisteet;
     }
 
+    public int getPisteetMax(String kentta, int nopeus) {
+        int max = 0;
+        String nimi;
+        for (int i = 0; i < kaikki.size(); i++) {
+            if (kaikki.get(i).getKentanNimi().equals(kentta) &&
+                kaikki.get(i).getNopeus() == nopeus && 
+                max < kaikki.get(i).getScore()){
+                max = kaikki.get(i).getScore();
+            }
+        }
+        return max;
+    }
+
     public void luoPisteet(String nimi, String kentta, int nopeus) {
-        Score uusi = new Score(nimi, kentta, uudetPisteet);
+        Score uusi = new Score(nimi, kentta, nopeus, uudetPisteet);
         kaikki.add(uusi);
+        save();
     }
 
     public void nollaa() {
         uudetPisteet = 0;
-        save();
     }
 
-    public void save() {
+    private void save() {
 
         try {
             PrintWriter tulos = new PrintWriter(new FileWriter("matopeli_pisteet.txt"), true);
@@ -59,14 +70,12 @@ public class Tilastot {
             for (int i = 0; i < kaikki.size(); i++) {
 
                 String nimi = kaikki.get(i).getNimi();
-                String kentta = kaikki.get(i).getKentta();
+                String kentta = kaikki.get(i).getKentanNimi();
                 int pisteet = kaikki.get(i).getScore();
+                int nopeus = kaikki.get(i).getNopeus();
 
-                tulos.println(nimi + "|" + kentta + "|" + pisteet);
-
+                tulos.println(kentta + "|" + nopeus + "|" + pisteet + "|" + nimi);
             }
-//            tulos.printf("%s" + "%n"+rivi);
-//            tulos.flush();
             tulos.close();
 
         } catch (IOException ex) {
@@ -74,19 +83,27 @@ public class Tilastot {
         }
     }
 
-    public void load() {
-        
-        while (lukija.hasNextLine()) {
-            String rivi = lukija.nextLine();
-            String[] taulu = rivi.split("|");
+    private static void load() {
 
-            String nimi = taulu[0];
-            String kentta = taulu[1];
-            int pisteet = Integer.parseInt(taulu[2]);
-            
-            Score uusi = new Score(nimi, kentta, 0);
-            
-            kaikki.add(uusi);
+
+        try {
+            lukija = new Scanner(tiedosto);
+
+            while (lukija.hasNextLine()) {
+                String rivi = lukija.nextLine();
+                String[] taulu = rivi.split("\\|");
+                if (taulu.length == 4) {
+                    String nimi = taulu[3];
+                    String kentta = taulu[0];
+                    int nopeus = Integer.parseInt(taulu[1]);
+                    int pisteet = Integer.parseInt(taulu[2]);
+
+                    Score uusi = new Score(nimi, kentta, nopeus, pisteet);
+                    kaikki.add(uusi);
+                }
+            }
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Tilastot.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }

@@ -1,15 +1,18 @@
 package matopeli;
 
 public class Score {
-
+    
+    private int nopeus;
     private int pisteet;
     private String nimi;
     private String kentta;
+    
 
-    public Score(String nimi, String kentta, int score) {
+    public Score(String nimi, String kentta, int nopeus, int score) {
         this.nimi = nimi;
         this.pisteet = score;
         this.kentta = kentta;
+        this.nopeus = nopeus;
     }
 
     public void setScore(int score) {
@@ -24,11 +27,11 @@ public class Score {
         return pisteet;
     }
     
-    public String getKentta(){
+    public String getKentanNimi(){
         return kentta;
     }
-//    @Override
-//    public String toString() {
-//        return uudetPisteet + " " + nimi;
-//    }
+
+    public int getNopeus() {
+        return nopeus;
+    }
 }
