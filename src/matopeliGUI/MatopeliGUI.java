@@ -49,8 +49,8 @@ public class MatopeliGUI extends javax.swing.JFrame {
         }
 
         public void asetaKasvavaNopeus() {
-            peli.setNopeus(200);
-            kello.setDelay(peli.getNopeus());
+            kello.setDelay(200);
+            peli.setNopeus(1);
             pelimuoto = 1;
             delay = 0;
         }
@@ -62,11 +62,11 @@ public class MatopeliGUI extends javax.swing.JFrame {
                 repaint();
                 if (pelimuoto == 1) {
                     delay = delay + 1;
-                    if (delay == 5 && peli.getNopeus() > 20) {
-                        peli.setNopeus(peli.getNopeus() - 1);
+                    if (delay == 5 && kello.getDelay() > 20) {
+                        peli.setNopeus(kello.getDelay() - 1);
                         delay = 0;
                     }
-                    kello.setDelay(peli.getNopeus());
+                    //kello.setDelay(peli.getNopeus());
                 }
             } else {
                 kello.stop();

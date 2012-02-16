@@ -1,6 +1,7 @@
 package matopeli;
 
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 /**
@@ -92,5 +93,9 @@ public class Logiikka {
         return pisteet.getPisteetMax(kentta.getNimi(), mato.getNopeus());
         else
         return pisteet.getPisteetMax(kentta.getNimi(), 1);    
+    }
+    
+    public ArrayList<Score> topLista(){
+        return pisteet.getTopScores(kentta.getNimi(), mato.getNopeus());
     }
 }
