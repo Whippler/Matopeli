@@ -1,8 +1,6 @@
-classic|100|3100|Whippler
 cross|100|1300|whippler
 classic|50|2300|Whippler
 classic|1|3500|Whippler
-classic|100|3800|Whippler
 classic|50|2800|Whippler
 classic|1|600|ossi
 classic|1|2100|Whippler
@@ -12,8 +10,11 @@ classic|150|200|ossi
 classic|150|4100|Whippler
 cross|50|400|Whippler
 classic|1|900|Anonymous
-classic|100|2600|Whippler
 classic|50|1500|Anonymous
 classic|50|400|Anonymous
 classic|100|4200|Whippler
 classic|100|4200|Whippler
+classic|100|4600|Whippler
+classic|100|5200|Whippler
+classic|100|6300|Whippler
+classic|150|0|Anonymous

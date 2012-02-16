@@ -9,9 +9,11 @@ import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.Timer;
 import matopeli.Logiikka;
+import matopeli.Score;
 
 public class MatopeliGUI extends javax.swing.JFrame {
 
@@ -75,7 +77,6 @@ public class MatopeliGUI extends javax.swing.JFrame {
                 else
                     showScore(1);
                 peli.reset(kentta);
-
                 if (pelimuoto == 1) {
                     this.asetaKasvavaNopeus();
                 }
@@ -298,7 +299,7 @@ public class MatopeliGUI extends javax.swing.JFrame {
     private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
         // TODO add your handling code here:
         int nappain = evt.getKeyCode();
-        System.out.println(nappain);
+//        System.out.println(nappain);
 
         if (nappain == 38 && kello.isRunning() == true) {  // ylänuoli
             peli.asetaSuunta("ylös");
@@ -492,7 +493,7 @@ public class MatopeliGUI extends javax.swing.JFrame {
 
     //Popup ikkunat
     //----------------------------------------------------------
-    public void showScore(int nopeus) {
+    private void showScore(int nopeus) {
         String nimi = JOptionPane.showInputDialog("Game Over! \n You Scored: " + peli.pisteet() + "\n Pleace enter name for scoreboard");
         if (nimi.equals("")) {
             peli.setScore("Anonymous", nopeus);
@@ -501,9 +502,10 @@ public class MatopeliGUI extends javax.swing.JFrame {
         }
     }
 
-    public void about() {
+    private void about() {
         JOptionPane.showMessageDialog(this, "not done yet");
     }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel TopScoreLabel;
     private javax.swing.JMenu jMenu1;

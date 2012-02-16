@@ -95,7 +95,7 @@ public class Logiikka {
         return pisteet.getPisteetMax(kentta.getNimi(), 1);    
     }
     
-    public ArrayList<Score> topLista(){
+    public ArrayList<Score> getTopScore(){
         return pisteet.getTopScores(kentta.getNimi(), mato.getNopeus());
     }
 }

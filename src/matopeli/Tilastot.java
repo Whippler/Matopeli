@@ -67,7 +67,7 @@ public class Tilastot {
         // järjestää listan pisteiden perusteella laskevaan järjestykseen
         for (int i = 0; i<pisteet.size()-1; i++){
             for (int j = i+1; j<pisteet.size(); j++){
-                if (pisteet.get(i).getScore()>pisteet.get(j).getScore()){
+                if (pisteet.get(i).getScore()<pisteet.get(j).getScore()){
                     Score apu = pisteet.get(i);
                     pisteet.set(i, pisteet.get(j));
                     pisteet.set(j, apu);
