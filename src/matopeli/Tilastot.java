@@ -43,9 +43,9 @@ public class Tilastot {
         int max = 0;
         String nimi;
         for (int i = 0; i < kaikki.size(); i++) {
-            if (kaikki.get(i).getKentanNimi().equals(kentta) &&
-                kaikki.get(i).getNopeus() == nopeus && 
-                max < kaikki.get(i).getScore()){
+            if (kaikki.get(i).getKentanNimi().equals(kentta)
+                    && kaikki.get(i).getNopeus() == nopeus
+                    && max < kaikki.get(i).getScore()) {
                 max = kaikki.get(i).getScore();
             }
         }
@@ -53,9 +53,23 @@ public class Tilastot {
     }
 
     public void luoPisteet(String nimi, String kentta, int nopeus) {
-        Score uusi = new Score(nimi, kentta, nopeus, uudetPisteet);
-        kaikki.add(uusi);
-        save();
+
+        if (lisataan(kentta, nopeus) == true) {
+            Score uusi = new Score(nimi, kentta, nopeus, uudetPisteet);
+            kaikki.add(uusi);
+            save();
+
+        }
+    }
+
+    private boolean lisataan(String kentta, int nopeus) {
+        int maara = pisteidenMaara(kentta, nopeus);
+        if (maara >= 5 && haeAlin(kentta, nopeus) > uudetPisteet) {
+            return false;
+        } else if (maara >= 5) {
+            kaikki.remove(haeAlimmanIndeksi(kentta, nopeus));
+        }
+        return true;
     }
 
     public void nollaa() {
@@ -105,5 +119,45 @@ public class Tilastot {
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Tilastot.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    private int haeAlin(String kentta, int nopeus) {
+
+        int alin = Integer.MAX_VALUE;
+        for (int i = 0; i < kaikki.size(); i++) {
+            if (kaikki.get(i).getKentanNimi().equals(kentta)
+                    && kaikki.get(i).getNopeus() == nopeus
+                    && kaikki.get(i).getScore() < alin) {
+                alin = kaikki.get(i).getScore();
+            }
+        }
+        return alin;
+    }
+
+    private int haeAlimmanIndeksi(String kentta, int nopeus) {
+
+        int alin = Integer.MAX_VALUE;
+        int indeksi = 0;
+
+        for (int i = 0; i < kaikki.size(); i++) {
+            if (kaikki.get(i).getKentanNimi().equals(kentta)
+                    && kaikki.get(i).getNopeus() == nopeus
+                    && kaikki.get(i).getScore() < alin) {
+                alin = kaikki.get(i).getScore();
+                indeksi = i;
+            }
+        }
+        return indeksi;
+    }
+
+    private int pisteidenMaara(String kentta, int nopeus) {
+        int summa = 0;
+        for (int i = 0; i < kaikki.size(); i++) {
+            if (kaikki.get(i).getKentanNimi().equals(kentta)
+                    && kaikki.get(i).getNopeus() == nopeus) {
+                summa = summa + 1;
+            }
+        }
+        return summa;
     }
 }

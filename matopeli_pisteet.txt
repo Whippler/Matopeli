@@ -1,3 +1,9 @@
-classic|100|1000|Whippler
-classic|100|4700|Whippler
-nowalls|100|4700|Whippler
+classic|100|1400|Whippler
+classic|100|800|mauno
+classic|100|3100|Whippler
+classic|100|2000|Whippler
+classic|100|500|ossi
+cross|100|1300|whippler
+classic|50|2300|Whippler
+classic|1|100|ossi
+classic|1|3500|Whippler

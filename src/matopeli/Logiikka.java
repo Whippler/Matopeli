@@ -83,11 +83,14 @@ public class Logiikka {
         return pisteet.getPisteet();
     }
     
-    public void setScore(String nimi){
-        pisteet.luoPisteet(nimi, kentta.getNimi(), mato.getNopeus());
+    public void setScore(String nimi, int nopeus){
+        pisteet.luoPisteet(nimi, kentta.getNimi(), nopeus);
     }
     
-    public int pisteetMax() {
+    public int pisteetMax(int pelimuoto) {
+        if (pelimuoto == 0)
         return pisteet.getPisteetMax(kentta.getNimi(), mato.getNopeus());
+        else
+        return pisteet.getPisteetMax(kentta.getNimi(), 1);    
     }
 }

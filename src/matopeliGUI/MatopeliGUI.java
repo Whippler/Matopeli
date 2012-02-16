@@ -19,11 +19,11 @@ public class MatopeliGUI extends javax.swing.JFrame {
     Timer kello;
     Kuuntelija kuuntelija = new Kuuntelija();
     BufferedImage bf;
+    int pelimuoto = 0;
 
     private class Kuuntelija implements ActionListener {
 
         private String kentta;
-        private int pelimuoto;
         private int delay;
 
         public Kuuntelija() {
@@ -69,7 +69,10 @@ public class MatopeliGUI extends javax.swing.JFrame {
                 }
             } else {
                 kello.stop();
-                showScore();
+                if (pelimuoto == 0)
+                    showScore(peli.getNopeus());
+                else
+                    showScore(1);
                 peli.reset(kentta);
 
                 if (pelimuoto == 1) {
@@ -361,14 +364,6 @@ public class MatopeliGUI extends javax.swing.JFrame {
         repaint();
     }//GEN-LAST:event_jMenuItem6ActionPerformed
 
-    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
-        // TODO add your handling code here:
-        kello.stop();
-        kuuntelija.asetaKasvavaNopeus();
-        kuuntelija.reset();
-        repaint();
-    }//GEN-LAST:event_jMenuItem7ActionPerformed
-
     private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
         // TODO add your handling code here:
         about();
@@ -410,6 +405,14 @@ public class MatopeliGUI extends javax.swing.JFrame {
         // TODO add your handling code here:
         repaint();
     }//GEN-LAST:event_jMenu3MenuDeselected
+
+    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
+        // TODO add your handling code here:
+        kello.stop();
+        kuuntelija.asetaKasvavaNopeus();
+        kuuntelija.reset();
+        repaint();
+    }//GEN-LAST:event_jMenuItem7ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -458,7 +461,7 @@ public class MatopeliGUI extends javax.swing.JFrame {
         super.paint(g);
 
         scoreLabel.setText("Score: " + peli.pisteet());
-        TopScoreLabel.setText("Top Score: " + peli.pisteetMax());
+        TopScoreLabel.setText("Top Score: " + peli.pisteetMax(pelimuoto));
 
         int[][] alue = peli.getKentta();
 
@@ -491,12 +494,12 @@ public class MatopeliGUI extends javax.swing.JFrame {
 
     //Popup ikkunat
     //----------------------------------------------------------
-    public void showScore() {
+    public void showScore(int nopeus) {
         String nimi = JOptionPane.showInputDialog("Game Over! \n You Scored: " + peli.pisteet() + "\n Pleace enter name for scoreboard");
         if (nimi.equals("")) {
-            peli.setScore("Anonymous");
+            peli.setScore("Anonymous", nopeus);
         } else {
-            peli.setScore(nimi);
+            peli.setScore(nimi, nopeus);
         }
     }
 
