@@ -19,12 +19,12 @@ public class Tilastot {
     private static Scanner lukija;
 
     public Tilastot() {
-        load();
         try {
             tiedosto.createNewFile();
         } catch (IOException ex) {
             Logger.getLogger(Tilastot.class.getName()).log(Level.SEVERE, null, ex);
         }
+        load();
     }
 
     public void addPisteet() {
@@ -53,12 +53,10 @@ public class Tilastot {
     }
 
     public void luoPisteet(String nimi, String kentta, int nopeus) {
-
         if (lisataan(kentta, nopeus) == true) {
             Score uusi = new Score(nimi, kentta, nopeus, uudetPisteet);
             kaikki.add(uusi);
             save();
-
         }
     }
 

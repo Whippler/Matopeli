@@ -15,3 +15,4 @@ classic|1|1300|Whippler
 classic|100|1700|Whippler
 classic|150|200|ossi
 classic|150|4100|Whippler
+cross|50|400|Whippler
