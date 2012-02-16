@@ -42,7 +42,8 @@ public class MatopeliGUI extends javax.swing.JFrame {
             peli.reset(kentta);
         }
 
-        public void asetaNopeus() {
+        public void asetaNopeus(int nopeus) {
+            peli.setNopeus(nopeus);
             kello.setDelay(peli.getNopeus());
             pelimuoto = 0;
         }
@@ -341,8 +342,7 @@ public class MatopeliGUI extends javax.swing.JFrame {
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
         // TODO add your handling code here:
         kello.stop();
-        kello.setDelay(50);
-        peli.setNopeus(50);
+        kuuntelija.asetaNopeus(50);
         kuuntelija.reset();
         repaint();
     }//GEN-LAST:event_jMenuItem4ActionPerformed
@@ -350,16 +350,14 @@ public class MatopeliGUI extends javax.swing.JFrame {
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
         // TODO add your handling code here:
         kello.stop();
-        kello.setDelay(100);
-        peli.setNopeus(100);
+        kuuntelija.asetaNopeus(100);
         kuuntelija.reset();
         repaint();
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
         // TODO add your handling code here:
-        kello.setDelay(150);
-        peli.setNopeus(150);
+        kuuntelija.asetaNopeus(150);
         kuuntelija.reset();
         repaint();
     }//GEN-LAST:event_jMenuItem6ActionPerformed
