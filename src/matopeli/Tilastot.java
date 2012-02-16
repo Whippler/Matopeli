@@ -52,6 +52,31 @@ public class Tilastot {
         return max;
     }
 
+    public ArrayList<Score> getTopScores(String kentta, int nopeus) {
+
+        ArrayList<Score> pisteet = new ArrayList();
+        
+        // hakee pisteet
+        for (int i = 0; i < kaikki.size(); i++) {
+            if (kaikki.get(i).getKentanNimi().equals(kentta)
+                    && kaikki.get(i).getNopeus() == nopeus) {
+                pisteet.add(kaikki.get(i));
+            }
+        }
+        
+        // järjestää listan pisteiden perusteella laskevaan järjestykseen
+        for (int i = 0; i<pisteet.size()-1; i++){
+            for (int j = i+1; j<pisteet.size(); j++){
+                if (pisteet.get(i).getScore()>pisteet.get(j).getScore()){
+                    Score apu = pisteet.get(i);
+                    pisteet.set(i, pisteet.get(j));
+                    pisteet.set(j, apu);
+                }
+            }
+        }
+        return pisteet;
+    }
+
     public void luoPisteet(String nimi, String kentta, int nopeus) {
         if (lisataan(kentta, nopeus) == true) {
             Score uusi = new Score(nimi, kentta, nopeus, uudetPisteet);

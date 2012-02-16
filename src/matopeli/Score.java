@@ -34,4 +34,11 @@ public class Score {
     public int getNopeus() {
         return nopeus;
     }
+
+    @Override
+    public String toString() {
+        return pisteet + " " + nimi;
+    }
+    
+    
 }
