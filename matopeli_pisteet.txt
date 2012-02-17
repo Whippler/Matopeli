@@ -33,3 +33,5 @@ huge|100|300|Anonymous
 huge|100|200|ossi
 huge|100|200|Anonymous
 huge|100|400|Anonymous
+nowalls|50|800|Whippler
+nowalls|50|0|Anonymous
