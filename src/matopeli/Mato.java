@@ -41,11 +41,11 @@ public class Mato {
      * @param suunta merkkijono joka kuvaa suuntaa
      */
     public void setSuunta(String suunta) {
-        if(this.suunta.equals("oikealle") && suunta.equals("vasemmalle") ||
-           this.suunta.equals("vasemmalle") && suunta.equals("oikealle") ||
-           this.suunta.equals("ylös") && suunta.equals("alas") ||
-           this.suunta.equals("alas") && suunta.equals("ylös")){
-           return;
+        if (this.suunta.equals("oikealle") && suunta.equals("vasemmalle")
+                || this.suunta.equals("vasemmalle") && suunta.equals("oikealle")
+                || this.suunta.equals("ylös") && suunta.equals("alas")
+                || this.suunta.equals("alas") && suunta.equals("ylös")) {
+            return;
         }
         this.suunta = suunta;
     }
@@ -121,17 +121,16 @@ public class Mato {
     public LinkedList getY() {
         return Y;
     }
-    
+
     public String getSuunta() {
         return suunta;
     }
-    
-    public int getNopeus(){
+
+    public int getNopeus() {
         return nopeus;
     }
 
     public void setNopeus(int nopeus) {
         this.nopeus = nopeus;
     }
-    
 }
