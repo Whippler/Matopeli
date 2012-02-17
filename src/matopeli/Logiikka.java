@@ -77,6 +77,10 @@ public class Logiikka {
     public int[][] getKentta() {
         return kentta.getKentta();
     }
+    
+    public String getKentanNimi(){
+        return kentta.getNimi();
+    }
 
     //Luokan TILASTOT HALLINTA
     //--------------------------------------------------------------------------

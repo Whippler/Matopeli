@@ -72,10 +72,11 @@ public class MatopeliGUI extends javax.swing.JFrame {
                 }
             } else {
                 kello.stop();
-                if (pelimuoto == 0)
+                if (pelimuoto == 0) {
                     showScore(peli.getNopeus());
-                else
+                } else {
                     showScore(1);
+                }
                 peli.reset(kentta);
                 if (pelimuoto == 1) {
                     this.asetaKasvavaNopeus();
@@ -124,6 +125,7 @@ public class MatopeliGUI extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         jMenuItem7 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
+        jMenuItem10 = new javax.swing.JMenuItem();
         jMenuItem9 = new javax.swing.JMenuItem();
 
         jMenu4.setText("File");
@@ -160,11 +162,11 @@ public class MatopeliGUI extends javax.swing.JFrame {
         jMenu1.addMenuListener(new javax.swing.event.MenuListener() {
             public void menuCanceled(javax.swing.event.MenuEvent evt) {
             }
-            public void menuSelected(javax.swing.event.MenuEvent evt) {
-                jMenu1MenuSelected(evt);
-            }
             public void menuDeselected(javax.swing.event.MenuEvent evt) {
                 jMenu1MenuDeselected(evt);
+            }
+            public void menuSelected(javax.swing.event.MenuEvent evt) {
+                jMenu1MenuSelected(evt);
             }
         });
 
@@ -206,11 +208,11 @@ public class MatopeliGUI extends javax.swing.JFrame {
         jMenu2.addMenuListener(new javax.swing.event.MenuListener() {
             public void menuCanceled(javax.swing.event.MenuEvent evt) {
             }
-            public void menuSelected(javax.swing.event.MenuEvent evt) {
-                jMenu2MenuSelected(evt);
-            }
             public void menuDeselected(javax.swing.event.MenuEvent evt) {
                 jMenu2MenuDeselected(evt);
+            }
+            public void menuSelected(javax.swing.event.MenuEvent evt) {
+                jMenu2MenuSelected(evt);
             }
         });
 
@@ -253,13 +255,21 @@ public class MatopeliGUI extends javax.swing.JFrame {
         jMenu3.addMenuListener(new javax.swing.event.MenuListener() {
             public void menuCanceled(javax.swing.event.MenuEvent evt) {
             }
-            public void menuSelected(javax.swing.event.MenuEvent evt) {
-                jMenu3MenuSelected(evt);
-            }
             public void menuDeselected(javax.swing.event.MenuEvent evt) {
                 jMenu3MenuDeselected(evt);
             }
+            public void menuSelected(javax.swing.event.MenuEvent evt) {
+                jMenu3MenuSelected(evt);
+            }
         });
+
+        jMenuItem10.setText("controls");
+        jMenuItem10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem10ActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuItem10);
 
         jMenuItem9.setText("abaut");
         jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
@@ -413,6 +423,12 @@ public class MatopeliGUI extends javax.swing.JFrame {
         repaint();
     }//GEN-LAST:event_jMenuItem7ActionPerformed
 
+    private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
+        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(this, "Space = Start/Pause \n"
+                + "Arrow keys = control", "Controls", JOptionPane.PLAIN_MESSAGE);
+    }//GEN-LAST:event_jMenuItem10ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -494,18 +510,44 @@ public class MatopeliGUI extends javax.swing.JFrame {
     //Popup ikkunat
     //----------------------------------------------------------
     private void showScore(int nopeus) {
-        String nimi = JOptionPane.showInputDialog("Game Over! \n You Scored: " + peli.pisteet() + "\n Pleace enter name for scoreboard");
-        if (nimi.equals("")) {
-            peli.setScore("Anonymous", nopeus);
-        } else {
-            peli.setScore(nimi, nopeus);
+
+        ArrayList<Score> topScore = peli.getTopScore();
+        String pisteet = "";
+        for (int i = 0; i < topScore.size(); i++) {
+            pisteet = pisteet + topScore.get(i).getScore() + " " + topScore.get(i).getNimi() + "\n";
+        }
+        String pelinNopeus = "";
+        if (nopeus == 1)
+            pelinNopeus = "Increasing";
+        else if(nopeus == 50)
+            pelinNopeus = "Fast";
+        else if(nopeus == 100)
+            pelinNopeus ="Normal";
+        else
+            pelinNopeus = "Slow";
+        
+        JOptionPane.showMessageDialog(this, "Game Over!\n"
+                + "You Scored: " + peli.pisteet() + "\n"
+                + "--------------------------------------------------------- \n"
+                + "LEVEL: " + peli.getKentanNimi() + " SPEED: " + pelinNopeus +"\n"
+                + "--------------------------------------------------------- \n"
+                + pisteet, "Game Over!", JOptionPane.PLAIN_MESSAGE);
+
+        if (topScore.size()<5 ||topScore.get(topScore.size() - 1).getScore() < peli.pisteet()) {
+            String nimi = JOptionPane.showInputDialog(this, "Pleace enter name for scoreboard", "nimi", JOptionPane.PLAIN_MESSAGE);
+            if (nimi == null) {
+                peli.setScore("Anonymous", nopeus);
+            } else if (nimi.equals("")) {
+                peli.setScore("Anonymous", nopeus);
+            } else {
+                peli.setScore(nimi, nopeus);
+            }
         }
     }
 
     private void about() {
-        JOptionPane.showMessageDialog(this, "not done yet");
+        JOptionPane.showMessageDialog(this, "not done yet", "About", JOptionPane.PLAIN_MESSAGE);
     }
-    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel TopScoreLabel;
     private javax.swing.JMenu jMenu1;
@@ -516,6 +558,7 @@ public class MatopeliGUI extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem10;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
