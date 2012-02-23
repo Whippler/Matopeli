@@ -1,5 +1,8 @@
 package matopeli;
-
+/**
+ * Luokka toteuttaa olion johon tallennetaan pisteet
+ * @author Kalle
+ */
 public class Score {
     
     private int nopeus;
@@ -7,16 +10,18 @@ public class Score {
     private String nimi;
     private String kentta;
     
-
+    /**
+     * 
+     * @param nimi pelaajan nimi
+     * @param kentta kentän nimi
+     * @param nopeus pelin nopeus
+     * @param score saadut pisteet
+     */
     public Score(String nimi, String kentta, int nopeus, int score) {
         this.nimi = nimi;
         this.pisteet = score;
         this.kentta = kentta;
         this.nopeus = nopeus;
-    }
-
-    public void setScore(int score) {
-        this.pisteet = score;
     }
 
     public String getNimi() {

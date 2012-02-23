@@ -19,6 +19,11 @@ public class Logiikka {
         this.reset("classic");
     }
 
+    /**
+     * aloittaa uuden peli
+     *
+     * @param nimi Ladattava kentän nimi
+     */
     public void reset(String nimi) {
         kentta.alustaKentta(nimi);
         mato.alustaMato(kentta.getKorkeus(), kentta.getLeveys());
@@ -27,7 +32,6 @@ public class Logiikka {
 
     // LUOKAN MATO HALLINTA
     //--------------------------------------------------------------------------
-    
     /**
      * Tällä metodilla valitaan madolle etenemissuunta
      *
@@ -59,47 +63,76 @@ public class Logiikka {
             pisteet.addPisteet();
         }
         if (ruutu == 1 || ruutu == 3) {
-            return false;    
+            return false;
         }
-        
+
         kentta.setArvo(X.getFirst(), Y.getFirst(), 3);
         return arvo;
     }
-        public int getNopeus(){
-            return mato.getNopeus();
-        }
-        public void setNopeus(int nopeus){
-            mato.setNopeus(nopeus);
-        }
-    
+
+    public int getNopeus() {
+        return mato.getNopeus();
+    }
+
+    public void setNopeus(int nopeus) {
+        mato.setNopeus(nopeus);
+    }
+
     //LUOKAN KENTTA HALLINTA
     //--------------------------------------------------------------------------
+    /**
+     * 
+     * @return palauttaa kentän
+     */
     public int[][] getKentta() {
         return kentta.getKentta();
     }
-    
-    public String getKentanNimi(){
+
+    /**
+     * 
+     * @return valitun kentän nimen
+     */
+    public String getKentanNimi() {
         return kentta.getNimi();
     }
 
     //Luokan TILASTOT HALLINTA
     //--------------------------------------------------------------------------
+    
+    /**
+     * 
+     * @return palauttaa käynnissä olevan pelin piste saldon
+     */
     public int pisteet() {
         return pisteet.getPisteet();
     }
-    
-    public void setScore(String nimi, int nopeus){
+
+    /**
+     * tallentaa pisteet
+     * @param nimi Pelaajan syöttämä nimimerkki
+     * @param nopeus pelatun pelin nopeus
+     */
+    public void setScore(String nimi, int nopeus) {
         pisteet.luoPisteet(nimi, kentta.getNimi(), nopeus);
     }
     
+    /**
+     * 
+     * @param pelimuoto nopeuden muoto, staattinen tai kiihtyvä.
+     * @return palauttaa valitun pelin suurimmat pisteet
+     */
     public int pisteetMax(int pelimuoto) {
-        if (pelimuoto == 0)
-        return pisteet.getPisteetMax(kentta.getNimi(), mato.getNopeus());
-        else
-        return pisteet.getPisteetMax(kentta.getNimi(), 1);    
+        if (pelimuoto == 0) {
+            return pisteet.getPisteetMax(kentta.getNimi(), mato.getNopeus());
+        } else {
+            return pisteet.getPisteetMax(kentta.getNimi(), 1);
+        }
     }
-    
-    public ArrayList<Score> getTopScore(){
+    /**
+     * 
+     * @return palauttaa valitun pelin 5 parasta tulosta.
+     */
+    public ArrayList<Score> getTopScore() {
         return pisteet.getTopScores(kentta.getNimi(), mato.getNopeus());
     }
 }

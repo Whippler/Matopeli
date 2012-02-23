@@ -15,14 +15,12 @@ classic|150|0|Anonymous
 classic|100|5700|Anonymous
 classic|50|1900|Anonymous
 huge|50|4200|Whippler
-cross|100|700|ossi
 classic|100|7100|Pekkiini
 classic|50|2800|Pekkiini
 cross|100|900|Whippler
 classic|100|7400|Whippler
 nowalls|100|400|Anonymous
 nowalls|100|600|Whippler
-cross|100|0|Whippler
 cross|100|900|ossi
 nowalls|100|300|Anonymous
 huge|100|400|Anonymous
@@ -40,3 +38,5 @@ huge|50|2700|Anonymous
 huge|50|400|Anonymous
 nowalls|50|3500|Whippler
 nowalls|50|3200|Anonymous
+cross|100|1300|Whippler
+cross|100|0|Anonymous

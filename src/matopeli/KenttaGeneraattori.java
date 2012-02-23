@@ -3,21 +3,18 @@ package matopeli;
 // import java.util.HashMap;
 
 /**
- *
+ * Toteuttaa pelin kentät
  * @author lammenoj
  */
 public class KenttaGeneraattori {
 
-//    private HashMap<String, int[][]> kentat = new HashMap<String, int[][]>();
-//    private HashMap<String, int[][]> kentatCopy = new HashMap<String, int[][]>();
 
     public KenttaGeneraattori() {
-//        kentat.put("classic", classic());
-//        kentat.put("cross", cross());
+
     }
 
     public int[][] getKentta(String nimi) {
-//        kentatCopy.putAll(kentat);
+
         if (nimi.equals("classic"))
             return classic();
         else if (nimi.equals("cross"))

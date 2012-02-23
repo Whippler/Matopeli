@@ -1,9 +1,5 @@
 package matopeliGUI;
 
-/**
- *
- * @author lammenoj
- */
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
@@ -14,7 +10,10 @@ import javax.swing.JOptionPane;
 import javax.swing.Timer;
 import matopeli.Logiikka;
 import matopeli.Score;
-
+/**
+ * Luokka toteuttaa matopelin käyttöliittymän
+ * @author Kalle
+ */
 public class MatopeliGUI extends javax.swing.JFrame {
 
     Logiikka peli = new Logiikka();
@@ -457,7 +456,10 @@ public class MatopeliGUI extends javax.swing.JFrame {
             }
         });
     }
-
+    /**
+     * piirtää kentän ruudulle
+     * @param g 
+     */
     public void animation(Graphics g) {
         super.paint(g);
 
@@ -493,8 +495,10 @@ public class MatopeliGUI extends javax.swing.JFrame {
         paint(g);
     }
 
-    //Popup ikkunat
-    //----------------------------------------------------------
+    /**
+     * Näyttää pelin lopussa pisteet
+     * @param nopeus 
+     */
     private void showScore(int nopeus) {
 
         ArrayList<Score> topScore = peli.getTopScore();

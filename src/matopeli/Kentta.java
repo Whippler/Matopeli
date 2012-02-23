@@ -25,14 +25,22 @@ public class Kentta {
      */
     public Kentta(){
     }
-    
+    /**
+     * hakee annetun kentän ja asettaa sinne omenan
+     * @param nimi kentän nimi
+     */
     public void alustaKentta(String nimi){
         kentta = null;
         this.kentta = kenttaGen.getKentta(nimi);
         this.nimi = nimi;
         this.setOmena();    
     }
-    
+    /**
+     * asettaa kentälle arvon value, koordinaatteihin x,y
+     * @param x
+     * @param y
+     * @param value 
+     */
     public void setArvo(int x, int y, int value){
         kentta[x][y] = value;
     }
