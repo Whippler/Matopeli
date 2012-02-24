@@ -25,7 +25,6 @@ cross|100|900|ossi
 nowalls|100|300|Anonymous
 huge|100|400|Anonymous
 huge|100|300|Anonymous
-huge|100|200|Anonymous
 huge|100|400|Anonymous
 nowalls|50|800|Whippler
 nowalls|50|0|Anonymous
@@ -52,3 +51,4 @@ nowalls|150|400|Anonymous
 nowalls|150|100||ossi
 nowalls|150|100|Anonymous
 nowalls|150|300|Whippler
+huge|100|1000|Whippler

@@ -115,19 +115,19 @@ public class MatopeliGUI extends javax.swing.JFrame {
         scoreLabel = new javax.swing.JLabel();
         TopScoreLabel = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenuItem8 = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        jMenuItem5 = new javax.swing.JMenuItem();
-        jMenuItem6 = new javax.swing.JMenuItem();
+        jMenuLevel = new javax.swing.JMenu();
+        jMenuItemKenttaCalssic = new javax.swing.JMenuItem();
+        jMenuItemKenttaNoWalls = new javax.swing.JMenuItem();
+        jMenuItemKenttaCross = new javax.swing.JMenuItem();
+        jMenuItemKenttaHuge = new javax.swing.JMenuItem();
+        jMenuSpeed = new javax.swing.JMenu();
+        jMenuItemNpeusFast = new javax.swing.JMenuItem();
+        jMenuItemNopeusNormal = new javax.swing.JMenuItem();
+        jMenuItemNopeusSlow = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
-        jMenuItem7 = new javax.swing.JMenuItem();
-        jMenu3 = new javax.swing.JMenu();
-        jMenuItem10 = new javax.swing.JMenuItem();
+        jMenuItemNopeusIncreasing = new javax.swing.JMenuItem();
+        jMenuHelp = new javax.swing.JMenu();
+        jMenuItemHelpControls = new javax.swing.JMenuItem();
 
         jMenu4.setText("File");
         jMenuBar2.add(jMenu4);
@@ -159,120 +159,120 @@ public class MatopeliGUI extends javax.swing.JFrame {
         TopScoreLabel.setMinimumSize(new java.awt.Dimension(60, 20));
         TopScoreLabel.setPreferredSize(new java.awt.Dimension(60, 20));
 
-        jMenu1.setText("level");
-        jMenu1.addMenuListener(new javax.swing.event.MenuListener() {
+        jMenuLevel.setText("level");
+        jMenuLevel.addMenuListener(new javax.swing.event.MenuListener() {
             public void menuCanceled(javax.swing.event.MenuEvent evt) {
             }
             public void menuSelected(javax.swing.event.MenuEvent evt) {
-                jMenu1MenuSelected(evt);
+                jMenuLevelMenuSelected(evt);
             }
             public void menuDeselected(javax.swing.event.MenuEvent evt) {
-                jMenu1MenuDeselected(evt);
+                jMenuLevelMenuDeselected(evt);
             }
         });
 
-        jMenuItem1.setText("classic");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemKenttaCalssic.setText("classic");
+        jMenuItemKenttaCalssic.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                jMenuItemKenttaCalssicActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem1);
+        jMenuLevel.add(jMenuItemKenttaCalssic);
 
-        jMenuItem2.setText("no walls");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemKenttaNoWalls.setText("no walls");
+        jMenuItemKenttaNoWalls.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                jMenuItemKenttaNoWallsActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem2);
+        jMenuLevel.add(jMenuItemKenttaNoWalls);
 
-        jMenuItem3.setText("cross");
-        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemKenttaCross.setText("cross");
+        jMenuItemKenttaCross.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem3ActionPerformed(evt);
+                jMenuItemKenttaCrossActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem3);
+        jMenuLevel.add(jMenuItemKenttaCross);
 
-        jMenuItem8.setText("huge");
-        jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemKenttaHuge.setText("huge");
+        jMenuItemKenttaHuge.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem8ActionPerformed(evt);
+                jMenuItemKenttaHugeActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem8);
+        jMenuLevel.add(jMenuItemKenttaHuge);
 
-        jMenuBar1.add(jMenu1);
+        jMenuBar1.add(jMenuLevel);
 
-        jMenu2.setText("speed");
-        jMenu2.addMenuListener(new javax.swing.event.MenuListener() {
+        jMenuSpeed.setText("speed");
+        jMenuSpeed.addMenuListener(new javax.swing.event.MenuListener() {
             public void menuCanceled(javax.swing.event.MenuEvent evt) {
             }
             public void menuSelected(javax.swing.event.MenuEvent evt) {
-                jMenu2MenuSelected(evt);
+                jMenuSpeedMenuSelected(evt);
             }
             public void menuDeselected(javax.swing.event.MenuEvent evt) {
-                jMenu2MenuDeselected(evt);
+                jMenuSpeedMenuDeselected(evt);
             }
         });
 
-        jMenuItem4.setText("fast");
-        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemNpeusFast.setText("fast");
+        jMenuItemNpeusFast.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem4ActionPerformed(evt);
+                jMenuItemNpeusFastActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItem4);
+        jMenuSpeed.add(jMenuItemNpeusFast);
 
-        jMenuItem5.setText("normal");
-        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemNopeusNormal.setText("normal");
+        jMenuItemNopeusNormal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem5ActionPerformed(evt);
+                jMenuItemNopeusNormalActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItem5);
+        jMenuSpeed.add(jMenuItemNopeusNormal);
 
-        jMenuItem6.setText("slow");
-        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemNopeusSlow.setText("slow");
+        jMenuItemNopeusSlow.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem6ActionPerformed(evt);
+                jMenuItemNopeusSlowActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItem6);
-        jMenu2.add(jSeparator1);
+        jMenuSpeed.add(jMenuItemNopeusSlow);
+        jMenuSpeed.add(jSeparator1);
 
-        jMenuItem7.setText("increasing");
-        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemNopeusIncreasing.setText("increasing");
+        jMenuItemNopeusIncreasing.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem7ActionPerformed(evt);
+                jMenuItemNopeusIncreasingActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItem7);
+        jMenuSpeed.add(jMenuItemNopeusIncreasing);
 
-        jMenuBar1.add(jMenu2);
+        jMenuBar1.add(jMenuSpeed);
 
-        jMenu3.setText("help");
-        jMenu3.addMenuListener(new javax.swing.event.MenuListener() {
+        jMenuHelp.setText("help");
+        jMenuHelp.addMenuListener(new javax.swing.event.MenuListener() {
             public void menuCanceled(javax.swing.event.MenuEvent evt) {
             }
             public void menuSelected(javax.swing.event.MenuEvent evt) {
-                jMenu3MenuSelected(evt);
+                jMenuHelpMenuSelected(evt);
             }
             public void menuDeselected(javax.swing.event.MenuEvent evt) {
-                jMenu3MenuDeselected(evt);
+                jMenuHelpMenuDeselected(evt);
             }
         });
 
-        jMenuItem10.setText("controls");
-        jMenuItem10.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemHelpControls.setText("controls");
+        jMenuItemHelpControls.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem10ActionPerformed(evt);
+                jMenuItemHelpControlsActionPerformed(evt);
             }
         });
-        jMenu3.add(jMenuItem10);
+        jMenuHelp.add(jMenuItemHelpControls);
 
-        jMenuBar1.add(jMenu3);
+        jMenuBar1.add(jMenuHelp);
 
         setJMenuBar(jMenuBar1);
 
@@ -323,23 +323,23 @@ public class MatopeliGUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_formKeyPressed
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void jMenuItemKenttaCalssicActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemKenttaCalssicActionPerformed
         // TODO add your handling code here:
         kello.stop();
         kuuntelija.asetaKentta("classic");
         this.setSize(peli.getKentanLeveys() * scale + 60, peli.getKentanKorkeus() * scale + 110);
         repaint();
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_jMenuItemKenttaCalssicActionPerformed
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+    private void jMenuItemKenttaNoWallsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemKenttaNoWallsActionPerformed
         // TODO add your handling code here:
         kello.stop();
         kuuntelija.asetaKentta("nowalls");
         this.setSize(peli.getKentanLeveys() * scale + 60, peli.getKentanKorkeus() * scale + 110);
         repaint();
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    }//GEN-LAST:event_jMenuItemKenttaNoWallsActionPerformed
 
-    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+    private void jMenuItemKenttaCrossActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemKenttaCrossActionPerformed
         // TODO add your handling code here:
         kello.stop();
         kuuntelija.asetaKentta("cross");
@@ -347,84 +347,84 @@ public class MatopeliGUI extends javax.swing.JFrame {
         // leveys: 280 
         // korkeus: 330
         repaint();
-    }//GEN-LAST:event_jMenuItem3ActionPerformed
+    }//GEN-LAST:event_jMenuItemKenttaCrossActionPerformed
 
-    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+    private void jMenuItemNpeusFastActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemNpeusFastActionPerformed
         // TODO add your handling code here:
         kello.stop();
         kuuntelija.asetaNopeus(50);
         kuuntelija.reset();
         repaint();
-    }//GEN-LAST:event_jMenuItem4ActionPerformed
+    }//GEN-LAST:event_jMenuItemNpeusFastActionPerformed
 
-    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+    private void jMenuItemNopeusNormalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemNopeusNormalActionPerformed
         // TODO add your handling code here:
         kello.stop();
         kuuntelija.asetaNopeus(100);
         kuuntelija.reset();
         repaint();
-    }//GEN-LAST:event_jMenuItem5ActionPerformed
+    }//GEN-LAST:event_jMenuItemNopeusNormalActionPerformed
 
-    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+    private void jMenuItemNopeusSlowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemNopeusSlowActionPerformed
         // TODO add your handling code here:
         kuuntelija.asetaNopeus(150);
         kuuntelija.reset();
         repaint();
-    }//GEN-LAST:event_jMenuItem6ActionPerformed
+    }//GEN-LAST:event_jMenuItemNopeusSlowActionPerformed
 
-    private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
+    private void jMenuItemKenttaHugeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemKenttaHugeActionPerformed
         // TODO add your handling code here:
         kuuntelija.asetaKentta("huge");
         this.setSize(peli.getKentanLeveys() * scale + 60, peli.getKentanKorkeus() * scale + 110);
 
         repaint();
-    }//GEN-LAST:event_jMenuItem8ActionPerformed
+    }//GEN-LAST:event_jMenuItemKenttaHugeActionPerformed
 
-    private void jMenu1MenuSelected(javax.swing.event.MenuEvent evt) {//GEN-FIRST:event_jMenu1MenuSelected
+    private void jMenuLevelMenuSelected(javax.swing.event.MenuEvent evt) {//GEN-FIRST:event_jMenuLevelMenuSelected
         // TODO add your handling code here:
         kello.stop();
-    }//GEN-LAST:event_jMenu1MenuSelected
+    }//GEN-LAST:event_jMenuLevelMenuSelected
 
-    private void jMenu2MenuSelected(javax.swing.event.MenuEvent evt) {//GEN-FIRST:event_jMenu2MenuSelected
+    private void jMenuSpeedMenuSelected(javax.swing.event.MenuEvent evt) {//GEN-FIRST:event_jMenuSpeedMenuSelected
         // TODO add your handling code here:
         kello.stop();
-    }//GEN-LAST:event_jMenu2MenuSelected
+    }//GEN-LAST:event_jMenuSpeedMenuSelected
 
-    private void jMenu3MenuSelected(javax.swing.event.MenuEvent evt) {//GEN-FIRST:event_jMenu3MenuSelected
+    private void jMenuHelpMenuSelected(javax.swing.event.MenuEvent evt) {//GEN-FIRST:event_jMenuHelpMenuSelected
         // TODO add your handling code here:
         kello.stop();
-    }//GEN-LAST:event_jMenu3MenuSelected
+    }//GEN-LAST:event_jMenuHelpMenuSelected
 
-    private void jMenu1MenuDeselected(javax.swing.event.MenuEvent evt) {//GEN-FIRST:event_jMenu1MenuDeselected
+    private void jMenuLevelMenuDeselected(javax.swing.event.MenuEvent evt) {//GEN-FIRST:event_jMenuLevelMenuDeselected
         // TODO add your handling code here:
         repaint();
-    }//GEN-LAST:event_jMenu1MenuDeselected
+    }//GEN-LAST:event_jMenuLevelMenuDeselected
 
-    private void jMenu2MenuDeselected(javax.swing.event.MenuEvent evt) {//GEN-FIRST:event_jMenu2MenuDeselected
+    private void jMenuSpeedMenuDeselected(javax.swing.event.MenuEvent evt) {//GEN-FIRST:event_jMenuSpeedMenuDeselected
         // TODO add your handling code here:
         repaint();
-    }//GEN-LAST:event_jMenu2MenuDeselected
+    }//GEN-LAST:event_jMenuSpeedMenuDeselected
 
-    private void jMenu3MenuDeselected(javax.swing.event.MenuEvent evt) {//GEN-FIRST:event_jMenu3MenuDeselected
+    private void jMenuHelpMenuDeselected(javax.swing.event.MenuEvent evt) {//GEN-FIRST:event_jMenuHelpMenuDeselected
         // TODO add your handling code here:
         repaint();
-    }//GEN-LAST:event_jMenu3MenuDeselected
+    }//GEN-LAST:event_jMenuHelpMenuDeselected
 
-    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
+    private void jMenuItemNopeusIncreasingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemNopeusIncreasingActionPerformed
         // TODO add your handling code here:
         kello.stop();
         kuuntelija.asetaKasvavaNopeus();
         kuuntelija.reset();
         repaint();
-    }//GEN-LAST:event_jMenuItem7ActionPerformed
+    }//GEN-LAST:event_jMenuItemNopeusIncreasingActionPerformed
 
-    private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
+    private void jMenuItemHelpControlsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemHelpControlsActionPerformed
         // TODO add your handling code here:
         JOptionPane.showMessageDialog(this, "Space = Start / Pause \n"
                 + "Arrow keys = change direction \n"
                 + "+ = zoom in \n"
                 + "- = zoom out", "Controls", JOptionPane.PLAIN_MESSAGE);
-    }//GEN-LAST:event_jMenuItem10ActionPerformed
+    }//GEN-LAST:event_jMenuItemHelpControlsActionPerformed
 
     /**
      * @param args the command line arguments
@@ -575,22 +575,22 @@ public class MatopeliGUI extends javax.swing.JFrame {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel TopScoreLabel;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuBar jMenuBar2;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem10;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem6;
-    private javax.swing.JMenuItem jMenuItem7;
-    private javax.swing.JMenuItem jMenuItem8;
+    private javax.swing.JMenu jMenuHelp;
+    private javax.swing.JMenuItem jMenuItemHelpControls;
+    private javax.swing.JMenuItem jMenuItemKenttaCalssic;
+    private javax.swing.JMenuItem jMenuItemKenttaCross;
+    private javax.swing.JMenuItem jMenuItemKenttaHuge;
+    private javax.swing.JMenuItem jMenuItemKenttaNoWalls;
+    private javax.swing.JMenuItem jMenuItemNopeusIncreasing;
+    private javax.swing.JMenuItem jMenuItemNopeusNormal;
+    private javax.swing.JMenuItem jMenuItemNopeusSlow;
+    private javax.swing.JMenuItem jMenuItemNpeusFast;
+    private javax.swing.JMenu jMenuLevel;
+    private javax.swing.JMenu jMenuSpeed;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JLabel scoreLabel;
     // End of variables declaration//GEN-END:variables
