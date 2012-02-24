@@ -64,13 +64,13 @@ public class MatopeliGUI extends javax.swing.JFrame {
 
             if (peli.etene() == true) {
                 repaint();
+                
                 if (pelimuoto == 1) {
                     delay = delay + 1;
                     if (delay == 5 && kello.getDelay() > 20) {
-                        peli.setNopeus(kello.getDelay() - 1);
-                        delay = 0;
+                       kello.setDelay(kello.getDelay() - 1);
+                       delay = 0;
                     }
-                    //kello.setDelay(peli.getNopeus());
                 }
             } else {
                 kello.stop();

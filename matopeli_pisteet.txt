@@ -41,3 +41,7 @@ nowalls|50|3200|Anonymous
 cross|100|1300|Whippler
 cross|100|0|Anonymous
 huge|50|1000|Anonymous
+nowalls|1|100|Anonymous
+nowalls|1|500|Anonymous
+nowalls|1|2000|Anonymous
+nowalls|1|2300|Whippler
