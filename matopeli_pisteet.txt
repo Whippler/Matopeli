@@ -54,3 +54,5 @@ huge|1|2500|Anonymous
 huge|50|2000|Anonymous
 classic|1|1000|Whippler
 huge|100|4800|Whippler
+nowalls|50|500|Whippler
+cross|50|0|Anonymous

@@ -34,11 +34,11 @@ public class KenttaTest {
     }
     @Test
     public void leveydenHaku(){
-        assertEquals(21, kentta.getLeveys());
+        assertEquals(22, kentta.getLeveys());
     }
     @Test
     public void korkeudenHaku(){
-        assertEquals(21, kentta.getKorkeus());
+        assertEquals(22, kentta.getKorkeus());
     }
     @Test
     public void kentanHaku(){
