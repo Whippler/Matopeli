@@ -26,7 +26,7 @@ public class Logiikka {
      */
     public void reset(String nimi) {
         kentta.alustaKentta(nimi);
-        mato.alustaMato(kentta.getKorkeus(), kentta.getLeveys());
+        mato.alustaMato(kentta.getKorkeus()-1, kentta.getLeveys()-1);
         pisteet.nollaa();
     }
 
@@ -94,6 +94,14 @@ public class Logiikka {
      */
     public String getKentanNimi() {
         return kentta.getNimi();
+    }
+    
+    public int getKentanLeveys(){
+        return kentta.getLeveys();
+    }
+    
+    public int getKentanKorkeus(){
+        return kentta.getKorkeus();
     }
 
     //Luokan TILASTOT HALLINTA

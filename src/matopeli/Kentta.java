@@ -78,10 +78,10 @@ public class Kentta {
     }
     
     public int getLeveys(){
-        return kentta.length-1;
+        return kentta.length;
     }
     public int getKorkeus(){
-        return kentta[0].length-1;
+        return kentta[0].length;
     }
     
     public int[][] getKentta(){

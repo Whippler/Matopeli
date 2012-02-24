@@ -10,8 +10,10 @@ import javax.swing.JOptionPane;
 import javax.swing.Timer;
 import matopeli.Logiikka;
 import matopeli.Score;
+
 /**
  * Luokka toteuttaa matopelin käyttöliittymän
+ *
  * @author Kalle
  */
 public class MatopeliGUI extends javax.swing.JFrame {
@@ -21,6 +23,7 @@ public class MatopeliGUI extends javax.swing.JFrame {
     Kuuntelija kuuntelija = new Kuuntelija();
     BufferedImage bf;
     int pelimuoto = 0;
+    private int scale = 10;
 
     private class Kuuntelija implements ActionListener {
 
@@ -93,8 +96,8 @@ public class MatopeliGUI extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null); //asettaa ikkunan keskellä näyttöä
         kello = new Timer(100, kuuntelija);
-        this.setSize(280, 330);
-        bf = new BufferedImage(560, 630, BufferedImage.TYPE_INT_RGB);
+        this.setSize(peli.getKentanLeveys() * scale + 60, peli.getKentanKorkeus() * scale + 110);
+        bf = new BufferedImage(1110, 1260, BufferedImage.TYPE_INT_RGB);
     }
 
     /**
@@ -299,7 +302,7 @@ public class MatopeliGUI extends javax.swing.JFrame {
     private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
         // TODO add your handling code here:
         int nappain = evt.getKeyCode();
-//        System.out.println(nappain);
+        //System.out.println(nappain);
 
         if (nappain == 38 && kello.isRunning() == true) {  // ylänuoli
             peli.asetaSuunta("ylös");
@@ -313,6 +316,10 @@ public class MatopeliGUI extends javax.swing.JFrame {
             kello.stop();
         } else if (nappain == 32 && kello.isRunning() == false) { //Space
             kello.start();
+        } else if (nappain == 521){ // +
+            zoomIn();    
+        } else if (nappain == 45){ // -
+            zoomOut();
         }
     }//GEN-LAST:event_formKeyPressed
 
@@ -320,7 +327,7 @@ public class MatopeliGUI extends javax.swing.JFrame {
         // TODO add your handling code here:
         kello.stop();
         kuuntelija.asetaKentta("classic");
-        this.setSize(280, 330);
+        this.setSize(peli.getKentanLeveys() * scale + 60, peli.getKentanKorkeus() * scale + 110);
         repaint();
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
@@ -328,7 +335,7 @@ public class MatopeliGUI extends javax.swing.JFrame {
         // TODO add your handling code here:
         kello.stop();
         kuuntelija.asetaKentta("nowalls");
-        this.setSize(280, 330);
+        this.setSize(peli.getKentanLeveys() * scale + 60, peli.getKentanKorkeus() * scale + 110);
         repaint();
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
@@ -336,7 +343,9 @@ public class MatopeliGUI extends javax.swing.JFrame {
         // TODO add your handling code here:
         kello.stop();
         kuuntelija.asetaKentta("cross");
-        this.setSize(280, 330);
+        this.setSize(peli.getKentanLeveys() * scale + 60, peli.getKentanKorkeus() * scale + 110); // leveys, korkeus
+        // leveys: 280 
+        // korkeus: 330
         repaint();
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
@@ -366,7 +375,8 @@ public class MatopeliGUI extends javax.swing.JFrame {
     private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
         // TODO add your handling code here:
         kuuntelija.asetaKentta("huge");
-        this.setSize(500, 550);
+        this.setSize(peli.getKentanLeveys() * scale + 60, peli.getKentanKorkeus() * scale + 110);
+
         repaint();
     }//GEN-LAST:event_jMenuItem8ActionPerformed
 
@@ -411,7 +421,9 @@ public class MatopeliGUI extends javax.swing.JFrame {
     private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
         // TODO add your handling code here:
         JOptionPane.showMessageDialog(this, "Space = Start / Pause \n"
-                + "Arrow keys = change direction", "Controls", JOptionPane.PLAIN_MESSAGE);
+                + "Arrow keys = change direction \n"
+                + "+ = zoom in \n"
+                + "- = zoom out", "Controls", JOptionPane.PLAIN_MESSAGE);
     }//GEN-LAST:event_jMenuItem10ActionPerformed
 
     /**
@@ -456,9 +468,11 @@ public class MatopeliGUI extends javax.swing.JFrame {
             }
         });
     }
+
     /**
      * piirtää kentän ruudulle
-     * @param g 
+     *
+     * @param g
      */
     public void animation(Graphics g) {
         super.paint(g);
@@ -479,7 +493,7 @@ public class MatopeliGUI extends javax.swing.JFrame {
                 } else {
                     g.setColor(Color.pink);
                 }
-                g.fillRect(j * 10 + 30, i * 10 + 80, 9, 9);
+                g.fillRect(j * scale + 30, i * scale + 80, scale - 1, scale - 1);
             }
         }
     }
@@ -495,38 +509,50 @@ public class MatopeliGUI extends javax.swing.JFrame {
         paint(g);
     }
 
+    private void zoomOut() {
+        scale = scale - 2;
+        this.setSize(peli.getKentanLeveys() * scale + 60, peli.getKentanKorkeus() * scale + 110);
+    }
+
+    private void zoomIn() {
+        scale = scale + 2;
+        this.setSize(peli.getKentanLeveys() * scale + 60, peli.getKentanKorkeus() * scale + 110);
+    }
+
     /**
      * Näyttää pelin lopussa pisteet
-     * @param nopeus 
+     *
+     * @param nopeus
      */
     private void showScore(int nopeus) {
 
         ArrayList<Score> topScore = peli.getTopScore();
         String pisteet = "";
         for (int i = 0; i < topScore.size(); i++) {
-            pisteet = pisteet + (i+1) + " | " + topScore.get(i).getScore() + " " + topScore.get(i).getNimi() + "\n";
+            pisteet = pisteet + (i + 1) + " | " + topScore.get(i).getScore() + " " + topScore.get(i).getNimi() + "\n";
         }
         String pelinNopeus;
-        if (nopeus == 1)
+        if (nopeus == 1) {
             pelinNopeus = "Increasing";
-        else if(nopeus == 50)
+        } else if (nopeus == 50) {
             pelinNopeus = "Fast";
-        else if(nopeus == 100)
-            pelinNopeus ="Normal";
-        else
+        } else if (nopeus == 100) {
+            pelinNopeus = "Normal";
+        } else {
             pelinNopeus = "Slow";
-        
+        }
 
-        if (topScore.size()<5 ||topScore.get(topScore.size() - 1).getScore() < peli.pisteet()) {
-            
+
+        if (topScore.size() < 5 || topScore.get(topScore.size() - 1).getScore() < peli.pisteet()) {
+
             String nimi = JOptionPane.showInputDialog(this, "--------------------------------------------------------- \n"
-                + "LEVEL: " + peli.getKentanNimi() + " SPEED: " + pelinNopeus +"\n"
-                + "--------------------------------------------------------- \n"
-                + pisteet
-                + "--------------------------------------------------------- \n"
-                + "You Scored: " + peli.pisteet() + "\n\n"
-                + "Pleace enter name for scoreboard! ", "Game Over, Congratulations!", JOptionPane.PLAIN_MESSAGE);
-            
+                    + "LEVEL: " + peli.getKentanNimi() + " SPEED: " + pelinNopeus + "\n"
+                    + "--------------------------------------------------------- \n"
+                    + pisteet
+                    + "--------------------------------------------------------- \n"
+                    + "You Scored: " + peli.pisteet() + "\n\n"
+                    + "Pleace enter name for scoreboard! ", "Game Over, Congratulations!", JOptionPane.PLAIN_MESSAGE);
+
             if (nimi == null) {
                 peli.setScore("Anonymous", nopeus);
             } else if (nimi.equals("")) {
@@ -536,14 +562,13 @@ public class MatopeliGUI extends javax.swing.JFrame {
             }
         } else {
             JOptionPane.showMessageDialog(this, "--------------------------------------------------------- \n"
-                + "LEVEL: " + peli.getKentanNimi() + " SPEED: " + pelinNopeus +"\n"
-                + "--------------------------------------------------------- \n"
-                + pisteet
-                + "--------------------------------------------------------- \n"
-                + "You Scored: " + peli.pisteet() + "\n", "Game Over, you lose", JOptionPane.PLAIN_MESSAGE);
+                    + "LEVEL: " + peli.getKentanNimi() + " SPEED: " + pelinNopeus + "\n"
+                    + "--------------------------------------------------------- \n"
+                    + pisteet
+                    + "--------------------------------------------------------- \n"
+                    + "You Scored: " + peli.pisteet() + "\n", "Game Over, you lose", JOptionPane.PLAIN_MESSAGE);
         }
     }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel TopScoreLabel;
     private javax.swing.JMenu jMenu1;
