@@ -52,3 +52,5 @@ nowalls|150|100||ossi
 nowalls|150|100|Anonymous
 nowalls|150|300|Whippler
 huge|100|1000|Whippler
+huge|1|2500|Anonymous
+huge|50|2000|Anonymous
