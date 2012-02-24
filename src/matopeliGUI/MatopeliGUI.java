@@ -376,7 +376,6 @@ public class MatopeliGUI extends javax.swing.JFrame {
         // TODO add your handling code here:
         kuuntelija.asetaKentta("huge");
         this.setSize(peli.getKentanLeveys() * scale + 60, peli.getKentanKorkeus() * scale + 110);
-
         repaint();
     }//GEN-LAST:event_jMenuItemKenttaHugeActionPerformed
 
