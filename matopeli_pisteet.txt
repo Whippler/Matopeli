@@ -39,9 +39,16 @@ huge|50|400|Anonymous
 nowalls|50|3500|Whippler
 nowalls|50|3200|Anonymous
 cross|100|1300|Whippler
-cross|100|0|Anonymous
 huge|50|1000|Anonymous
 nowalls|1|100|Anonymous
 nowalls|1|500|Anonymous
 nowalls|1|2000|Anonymous
 nowalls|1|2300|Whippler
+nowalls|1|2900|Whippler
+cross|1|700|Whippler
+cross|100|1000|Whippler
+nowalls|150|500|whippler | jee
+nowalls|150|400|Anonymous
+nowalls|150|100||ossi
+nowalls|150|100|Anonymous
+nowalls|150|300|Whippler
