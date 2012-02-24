@@ -64,12 +64,12 @@ public class MatopeliGUI extends javax.swing.JFrame {
 
             if (peli.etene() == true) {
                 repaint();
-                
+
                 if (pelimuoto == 1) {
                     delay = delay + 1;
                     if (delay == 5 && kello.getDelay() > 20) {
-                       kello.setDelay(kello.getDelay() - 1);
-                       delay = 0;
+                        kello.setDelay(kello.getDelay() - 1);
+                        delay = 0;
                     }
                 }
             } else {
@@ -161,13 +161,13 @@ public class MatopeliGUI extends javax.swing.JFrame {
 
         jMenu1.setText("level");
         jMenu1.addMenuListener(new javax.swing.event.MenuListener() {
-            public void menuDeselected(javax.swing.event.MenuEvent evt) {
-                jMenu1MenuDeselected(evt);
-            }
             public void menuCanceled(javax.swing.event.MenuEvent evt) {
             }
             public void menuSelected(javax.swing.event.MenuEvent evt) {
                 jMenu1MenuSelected(evt);
+            }
+            public void menuDeselected(javax.swing.event.MenuEvent evt) {
+                jMenu1MenuDeselected(evt);
             }
         });
 
@@ -207,13 +207,13 @@ public class MatopeliGUI extends javax.swing.JFrame {
 
         jMenu2.setText("speed");
         jMenu2.addMenuListener(new javax.swing.event.MenuListener() {
-            public void menuDeselected(javax.swing.event.MenuEvent evt) {
-                jMenu2MenuDeselected(evt);
-            }
             public void menuCanceled(javax.swing.event.MenuEvent evt) {
             }
             public void menuSelected(javax.swing.event.MenuEvent evt) {
                 jMenu2MenuSelected(evt);
+            }
+            public void menuDeselected(javax.swing.event.MenuEvent evt) {
+                jMenu2MenuDeselected(evt);
             }
         });
 
@@ -254,13 +254,13 @@ public class MatopeliGUI extends javax.swing.JFrame {
 
         jMenu3.setText("help");
         jMenu3.addMenuListener(new javax.swing.event.MenuListener() {
-            public void menuDeselected(javax.swing.event.MenuEvent evt) {
-                jMenu3MenuDeselected(evt);
-            }
             public void menuCanceled(javax.swing.event.MenuEvent evt) {
             }
             public void menuSelected(javax.swing.event.MenuEvent evt) {
                 jMenu3MenuSelected(evt);
+            }
+            public void menuDeselected(javax.swing.event.MenuEvent evt) {
+                jMenu3MenuDeselected(evt);
             }
         });
 
@@ -282,8 +282,8 @@ public class MatopeliGUI extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(26, 26, 26)
-                .addComponent(scoreLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(scoreLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
                 .addComponent(TopScoreLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28))
         );
@@ -316,9 +316,9 @@ public class MatopeliGUI extends javax.swing.JFrame {
             kello.stop();
         } else if (nappain == 32 && kello.isRunning() == false) { //Space
             kello.start();
-        } else if (nappain == 521){ // +
-            zoomIn();    
-        } else if (nappain == 45){ // -
+        } else if (nappain == 521) { // +
+            zoomIn();
+        } else if (nappain == 45) { // -
             zoomOut();
         }
     }//GEN-LAST:event_formKeyPressed
@@ -510,13 +510,17 @@ public class MatopeliGUI extends javax.swing.JFrame {
     }
 
     private void zoomOut() {
-        scale = scale - 2;
-        this.setSize(peli.getKentanLeveys() * scale + 60, peli.getKentanKorkeus() * scale + 110);
+        if (scale >= 9) {
+            scale = scale - 2;
+            this.setSize(peli.getKentanLeveys() * scale + 60, peli.getKentanKorkeus() * scale + 110);
+        }
     }
 
     private void zoomIn() {
-        scale = scale + 2;
-        this.setSize(peli.getKentanLeveys() * scale + 60, peli.getKentanKorkeus() * scale + 110);
+        if (scale <= 20) {
+            scale = scale + 2;
+            this.setSize(peli.getKentanLeveys() * scale + 60, peli.getKentanKorkeus() * scale + 110);
+        }
     }
 
     /**
