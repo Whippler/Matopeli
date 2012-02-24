@@ -419,7 +419,8 @@ public class MatopeliGUI extends javax.swing.JFrame {
 
     private void jMenuItemHelpControlsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemHelpControlsActionPerformed
         // TODO add your handling code here:
-        JOptionPane.showMessageDialog(this, "Space = Start / Pause \n"
+        JOptionPane.showMessageDialog(this, 
+                  "Space = Start / Pause \n"
                 + "Arrow keys = change direction \n"
                 + "+ = zoom in \n"
                 + "- = zoom out", "Controls", JOptionPane.PLAIN_MESSAGE);

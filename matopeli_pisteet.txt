@@ -2,7 +2,6 @@ cross|100|1300|whippler
 classic|50|2300|Whippler
 classic|1|3500|Whippler
 classic|50|2800|Whippler
-classic|1|600|ossi
 classic|1|2100|Whippler
 classic|1|1300|Whippler
 classic|150|200|ossi
@@ -24,7 +23,6 @@ nowalls|100|600|Whippler
 cross|100|900|ossi
 nowalls|100|300|Anonymous
 huge|100|400|Anonymous
-huge|100|300|Anonymous
 huge|100|400|Anonymous
 nowalls|50|800|Whippler
 nowalls|50|0|Anonymous
@@ -54,3 +52,5 @@ nowalls|150|300|Whippler
 huge|100|1000|Whippler
 huge|1|2500|Anonymous
 huge|50|2000|Anonymous
+classic|1|1000|Whippler
+huge|100|4800|Whippler
